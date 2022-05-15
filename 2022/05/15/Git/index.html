@@ -1,0 +1,99 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Git"><meta name="keywords" content="git"><meta name="author" content="Echo"><meta name="copyright" content="Echo"><title>Git | TTTecho</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.9.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.9.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  hexoVersion: '6.0.0'
+} </script><meta name="generator" content="Hexo 6.0.0"></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Git%E4%B8%8ESVN%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8C%BA%E5%88%AB"><span class="toc-number">1.</span> <span class="toc-text">1.Git与SVN的主要区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%B8%B8%E7%94%A8%E7%9A%84Linux%E5%91%BD%E4%BB%A4"><span class="toc-number">2.</span> <span class="toc-text">2.常用的Linux命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Git%E5%9F%BA%E6%9C%AC%E7%90%86%E8%AE%BA"><span class="toc-number">3.</span> <span class="toc-text">3.Git基本理论</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1%E4%B8%89%E4%B8%AA%E5%8C%BA%E5%9F%9F"><span class="toc-number">3.1.</span> <span class="toc-text">3.1三个区域</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-number">3.2.</span> <span class="toc-text">3.2工作流程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Git%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA"><span class="toc-number">4.</span> <span class="toc-text">4.Git项目搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1%E5%88%9B%E5%BB%BA%E5%B7%A5%E4%BD%9C%E7%9B%AE%E5%BD%95%E4%B8%8E%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4"><span class="toc-number">4.1.</span> <span class="toc-text">4.1创建工作目录与常用指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E6%90%AD%E5%BB%BA"><span class="toc-number">4.2.</span> <span class="toc-text">4.2本地仓库搭建</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Git%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="toc-number">5.</span> <span class="toc-text">5.Git文件操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1%E6%96%87%E4%BB%B6%E7%9A%84%E5%9B%9B%E7%A7%8D%E7%8A%B6%E6%80%81"><span class="toc-number">5.1.</span> <span class="toc-text">5.1文件的四种状态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E7%8A%B6%E6%80%81"><span class="toc-number">5.2.</span> <span class="toc-text">5.2查看文件状态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-3%E5%BF%BD%E7%95%A5%E6%96%87%E4%BB%B6"><span class="toc-number">5.3.</span> <span class="toc-text">5.3忽略文件</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="http://mms2.baidu.com/it/u=3548240264,3267609652&amp;fm=253&amp;app=138&amp;f=JPEG&amp;fmt=auto&amp;q=75?w=500&amp;h=500"></div><div class="author-info__name text-center">Echo</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">5</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">4</span></a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">TTTecho</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">Git</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2022-05-15</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h3 id="1-Git与SVN的主要区别"><a href="#1-Git与SVN的主要区别" class="headerlink" title="1.Git与SVN的主要区别"></a>1.Git与SVN的主要区别</h3><ul>
+<li>SVN是集中式版本控制系统，版本库是集中放在中央服务器的，而工作的时候，用的都是自己的电脑，所以首先要从中央服务器得到最新的版本，然后工作，完成工作后，需要把自己做完的活推送到中央服务器。集中式版本控制系统是必须联网才能工作，对网络带宽要求较高。</li>
+<li>Git是分布式版本控制系统，没有中央服务器，每个人的电脑就是一个完整的版本库，工作的时候不需要联网了，因为版本都在自己电脑上。协同的方法是这样的：比如说自己在电脑上改了文件A，其他人也在电脑上改了文件A，这时，你们两之间只需把各自的修改推送给对方，就可以互相看到对方的修改了。Git可以直接看到更新了哪些代码和文件！</li>
+</ul>
+<h3 id="2-常用的Linux命令"><a href="#2-常用的Linux命令" class="headerlink" title="2.常用的Linux命令"></a>2.常用的Linux命令</h3><ol>
+<li>cd : 改变目录。</li>
+<li>cd . . 回退到上一个目录，直接cd进入默认目录</li>
+<li>pwd : 显示当前所在的目录路径。</li>
+<li>ls(ll):  都是列出当前目录中的所有文件，只不过ll(两个ll)列出的内容更为详细。</li>
+<li>touch : 新建一个文件 如 touch index.js 就会在当前目录下新建一个index.js文件。</li>
+<li>rm:  删除一个文件, rm index.js 就会把index.js文件删除。</li>
+<li>mkdir:  新建一个目录,就是新建一个文件夹。</li>
+<li>rm -r :  删除一个文件夹, rm -r src 删除src目录（rm -rf / 切勿在Linux中尝试！删除电脑中全部文件！）</li>
+<li>mv 移动文件, mv index.html src ; index.html 是我们要移动的文件, src 是目标文件夹,当然, 这样写,必须保证文件和目标文件夹在同一目录下。</li>
+<li>reset 重新初始化终端/清屏。</li>
+<li>clear 清屏。</li>
+<li>history 查看命令历史。</li>
+<li>help 帮助。</li>
+<li>exit 退出。</li>
+<li>#表示注释</li>
+</ol>
+<h3 id="3-Git基本理论"><a href="#3-Git基本理论" class="headerlink" title="3.Git基本理论"></a>3.Git基本理论</h3><h4 id="3-1三个区域"><a href="#3-1三个区域" class="headerlink" title="3.1三个区域"></a>3.1三个区域</h4><p>Git本地有三个工作区域：工作目录（Working Directory）、暂存区(Stage/Index)、资源库(Repository或Git Directory)。如果在加上远程的git仓库(Remote Directory)就可以分为四个工作区域。文件在这四个区域之间的转换关系如下：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/uJDAUKrGC7Ksu8UlITwMlbX3kMGtZ9p0NJ4L9OPI9ia1MmibpvDd6cSddBdvrlbdEtyEOrh4CKnWVibyfCHa3lzXw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1"></p>
+<ul>
+<li>Workspace：工作区，就是你平时存放项目代码的地方</li>
+<li>Index / Stage：暂存区，用于临时存放你的改动，事实上它只是一个文件，保存即将提交到文件列表信息</li>
+<li>Repository：仓库区（或本地仓库），就是安全存放数据的位置，这里面有你提交到所有版本的数据。其中HEAD指向最新放入仓库的版本</li>
+<li>Remote：远程仓库，托管代码的服务器，可以简单的认为是你项目组中的一台电脑用于远程数据交换</li>
+</ul>
+<p>本地的三个区域确切的说应该是git仓库中HEAD指向的版本：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/uJDAUKrGC7Ksu8UlITwMlbX3kMGtZ9p0icz6X2aibIgUWzHxtwX8kicPCKpDrsiaPzZk04OlI2bzlydzicBuXTJvLEQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1"></p>
+<ul>
+<li>Directory：使用Git管理的一个目录，也就是一个仓库，包含我们的工作空间和Git的管理空间。</li>
+<li>WorkSpace：需要通过Git进行版本控制的目录和文件，这些目录和文件组成了工作空间。</li>
+<li>.git：存放Git管理信息的目录，初始化仓库的时候自动创建。</li>
+<li>Index/Stage：暂存区，或者叫待提交更新区，在提交进入repo之前，我们可以把所有的更新放在暂存区。</li>
+<li>Local Repo：本地仓库，一个存放在本地的版本库；HEAD会只是当前的开发分支（branch）。</li>
+<li>Stash：隐藏，是一个工作状态保存栈，用于保存/恢复WorkSpace中的临时状态。</li>
+</ul>
+<h4 id="3-2工作流程"><a href="#3-2工作流程" class="headerlink" title="3.2工作流程"></a>3.2工作流程</h4><p>git的工作流程一般是这样的：</p>
+<ol>
+<li>在工作目录中添加、修改文件；</li>
+<li>将需要进行版本管理的文件放入暂存区域；</li>
+<li>将暂存区域的文件提交到git仓库。</li>
+</ol>
+<p>因此，git管理的文件有三种状态：已修改（modified）,已暂存（staged）,已提交(committed)</p>
+<h3 id="4-Git项目搭建"><a href="#4-Git项目搭建" class="headerlink" title="4.Git项目搭建"></a>4.Git项目搭建</h3><h4 id="4-1创建工作目录与常用指令"><a href="#4-1创建工作目录与常用指令" class="headerlink" title="4.1创建工作目录与常用指令"></a>4.1创建工作目录与常用指令</h4><p>工作目录（WorkSpace)一般就是你希望Git帮助你管理的文件夹，可以是你项目的目录，也可以是一个空目录，建议不要有中文。</p>
+<p>日常使用只要记住下图6个命令：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/uJDAUKrGC7Ksu8UlITwMlbX3kMGtZ9p0AII6YVooUzibpibzJnoOHHXUsL3f9DqA4horUibfcpEZ88Oyf2gQQNR6w/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1"></p>
+<h4 id="4-2本地仓库搭建"><a href="#4-2本地仓库搭建" class="headerlink" title="4.2本地仓库搭建"></a>4.2本地仓库搭建</h4><p>创建本地仓库的方法有两种：一种是创建全新的仓库，另一种是克隆远程仓库。</p>
+<p><strong>本地仓库搭建</strong></p>
+<ol>
+<li><p>创建全新的仓库，需要用GIT管理的项目的根目录执行：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 在当前目录新建一个Git代码库</span><br><span class="line">$ git init</span><br></pre></td></tr></table></figure></li>
+<li><p>执行后可以看到，仅仅在项目目录多出了一个.git目录，关于版本等的所有信息都在这个目录里面。</p>
+</li>
+</ol>
+<p><strong>克隆远程仓库</strong></p>
+<ol>
+<li><p>另一种方式是克隆远程目录，是将远程服务器上的仓库完全镜像一份至本地！</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 克隆一个项目和它的整个代码历史(版本信息)</span><br><span class="line">$ git clone [url]  # https://gitee.com/###/###</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="5-Git文件操作"><a href="#5-Git文件操作" class="headerlink" title="5.Git文件操作"></a>5.Git文件操作</h3><h4 id="5-1文件的四种状态"><a href="#5-1文件的四种状态" class="headerlink" title="5.1文件的四种状态"></a>5.1文件的四种状态</h4><p>版本控制就是对文件的版本控制，要对文件进行修改、提交等操作，首先要知道文件当前在什么状态，不然可能会提交了现在还不想提交的文件，或者要提交的文件没提交上。</p>
+<ul>
+<li>Untracked: 未跟踪, 此文件在文件夹中, 但并没有加入到git库, 不参与版本控制. 通过git add 状态变为Staged.</li>
+<li>Unmodify: 文件已经入库, 未修改, 即版本库中的文件快照内容与文件夹中完全一致. 这种类型的文件有两种去处, 如果它被修改, 而变为Modified. 如果使用git rm移出版本库, 则成为Untracked文件</li>
+<li>Modified: 文件已修改, 仅仅是修改, 并没有进行其他的操作. 这个文件也有两个去处, 通过git add可进入暂存staged状态, 使用git checkout 则丢弃修改过, 返回到unmodify状态, 这个git checkout即从库中取出文件, 覆盖当前修改 !</li>
+<li>Staged: 暂存状态. 执行git commit则将修改同步到库中, 这时库中的文件和本地文件又变为一致, 文件为Unmodify状态. 执行git reset HEAD filename取消暂存, 文件状态为Modified</li>
+</ul>
+<h4 id="5-2查看文件状态"><a href="#5-2查看文件状态" class="headerlink" title="5.2查看文件状态"></a>5.2查看文件状态</h4><p>上面说文件有4种状态，通过如下命令可以查看到文件的状态：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#查看指定文件状态</span><br><span class="line">git status [filename]</span><br><span class="line"></span><br><span class="line">#查看所有文件状态</span><br><span class="line">git status</span><br><span class="line"></span><br><span class="line"># git add .                  添加所有文件到暂存区</span><br><span class="line"># git commit -m &quot;消息内容&quot;    提交暂存区中的内容到本地仓库 -m 提交信息</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-3忽略文件"><a href="#5-3忽略文件" class="headerlink" title="5.3忽略文件"></a>5.3忽略文件</h4><p>有些时候我们不想把某些文件纳入版本控制中，比如数据库文件，临时文件，设计文件等</p>
+<p>在主目录下建立”.gitignore”文件，此文件有如下规则：</p>
+<ol>
+<li>忽略文件中的空行或以井号（#）开始的行将会被忽略。</li>
+<li>可以使用Linux通配符。例如：星号（*）代表任意多个字符，问号（？）代表一个字符，方括号（[abc]）代表可选字符范围，大括号（{string1,string2,…}）代表可选的字符串等。</li>
+<li>如果名称的最前面有一个感叹号（!），表示例外规则，将不被忽略。</li>
+<li>如果名称的最前面是一个路径分隔符（/），表示要忽略的文件在此目录下，而子目录中的文件不忽略。</li>
+<li>如果名称的最后面是一个路径分隔符（/），表示要忽略的是此目录下该名称的子目录，而非文件（默认文件或目录都忽略）。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#为注释</span><br><span class="line">*.txt        #忽略所有 .txt结尾的文件,这样的话上传就不会被选中！</span><br><span class="line">!lib.txt     #但lib.txt除外</span><br><span class="line">/temp        #仅忽略项目根目录下的TODO文件,不包括其它目录temp</span><br><span class="line">build/       #忽略build/目录下的所有文件</span><br><span class="line">doc/*.txt    #会忽略 doc/notes.txt 但不包括 doc/server/arch.txt</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/Bf7uVhGiu47uOELjmC5uXQ">详情引用</a></p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Echo</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2022/05/15/Git/">http://example.com/2022/05/15/Git/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/git/">git</a></div><nav id="pagination"><div class="next-post pull-right"><a href="/2022/01/17/algorithm/"><span>Algorithe---Java中isEmpty</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2021 - 2022 By Echo</div><div class="framework-info"><span>Driven - </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.9.0"></script><script src="/js/fancybox.js?version=1.9.0"></script><script src="/js/sidebar.js?version=1.9.0"></script><script src="/js/copy.js?version=1.9.0"></script><script src="/js/fireworks.js?version=1.9.0"></script><script src="/js/transition.js?version=1.9.0"></script><script src="/js/scroll.js?version=1.9.0"></script><script src="/js/head.js?version=1.9.0"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script></body></html>
