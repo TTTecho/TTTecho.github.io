@@ -16,22 +16,22 @@
   <meta name="author" content="Echo">
   <meta name="keywords" content="">
   
-    <meta name="description" content="不要在foreach循环里进行元素的remove&#x2F;add操作。remove元素请使用Iterator方式，如果并发操作，需要对Iterator对象加锁。">
+    <meta name="description" content="hit">
 <meta property="og:type" content="article">
-<meta property="og:title" content="remove元素请使用Iterator">
-<meta property="og:url" content="http://example.com/2022/06/30/removeList/index.html">
+<meta property="og:title" content="ByteDany">
+<meta property="og:url" content="http://example.com/2022/07/06/ByteDance/index.html">
 <meta property="og:site_name" content="TTTecho">
-<meta property="og:description" content="不要在foreach循环里进行元素的remove&#x2F;add操作。remove元素请使用Iterator方式，如果并发操作，需要对Iterator对象加锁。">
+<meta property="og:description" content="hit">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-06-30T14:48:07.616Z">
-<meta property="article:modified_time" content="2022-06-30T14:47:25.592Z">
+<meta property="article:published_time" content="2022-07-06T13:24:44.331Z">
+<meta property="article:modified_time" content="2022-07-06T13:24:39.128Z">
 <meta property="article:author" content="Echo">
-<meta property="article:tag" content="JAVA集合">
+<meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>remove元素请使用Iterator - TTTecho</title>
+  <title>ByteDany - TTTecho</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -194,7 +194,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="remove元素请使用Iterator"></span>
+            <span id="subtitle" data-typed-text="ByteDany"></span>
           
         </div>
 
@@ -205,8 +205,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-06-30 22:48" pubdate>
-          2022年6月30日 晚上
+        <time datetime="2022-07-06 21:24" pubdate>
+          2022年7月6日 晚上
         </time>
       </span>
     
@@ -217,7 +217,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.8k 字
+          1.6k 字
         
       </span>
     
@@ -228,7 +228,7 @@
         
         
         
-          24 分钟
+          14 分钟
         
       </span>
     
@@ -266,38 +266,85 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">remove元素请使用Iterator</h1>
+            <h1 style="display: none">ByteDany</h1>
             
             <div class="markdown-body">
               
-              <h3 id="1-foreach循环里进行元素的remove-add操作：禁止"><a href="#1-foreach循环里进行元素的remove-add操作：禁止" class="headerlink" title="1.foreach循环里进行元素的remove/add操作：禁止"></a>1.foreach循环里进行元素的remove/add操作：禁止</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java">List&lt;String&gt; list = <span class="hljs-keyword">new</span> ArrayList&lt;String&gt;(); <br>list.add(<span class="hljs-string">&quot;1&quot;</span>);<br>list.add(<span class="hljs-string">&quot;2&quot;</span>);<br><span class="hljs-keyword">for</span> (String item : list) &#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-string">&quot;1&quot;</span>.equals(item)) &#123;<br>        list.remove(item);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>以上代码执行，若把“1”更换为“2”，就会抛出如下异常：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java">Exception in thread <span class="hljs-string">&quot;main&quot;</span> java.util.ConcurrentModificationException<br>	at java.util.ArrayList$Itr.checkForComodification(ArrayList.java:<span class="hljs-number">911</span>)<br>	at java.util.ArrayList$Itr.next(ArrayList.java:<span class="hljs-number">861</span>)<br>	at demo.demo1.main(demo1.java:<span class="hljs-number">23</span>)<br></code></pre></td></tr></table></figure>
-
-<p>我们看一下执行的过程：</p>
-<ol>
-<li><p>首先会创建 Itr() ,对expectedModCount，modCount进行赋值</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">int</span> cursor;       <span class="hljs-comment">// index of next element to return</span><br>      <span class="hljs-keyword">int</span> lastRet = -<span class="hljs-number">1</span>; <span class="hljs-comment">// index of last element returned; -1 if no such</span><br>      <span class="hljs-keyword">int</span> expectedModCount = modCount;<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java">        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">hasNext</span><span class="hljs-params">()</span> </span>&#123;<br>            <span class="hljs-keyword">return</span> cursor != size;<br>        &#125;<br><span class="hljs-comment">//第一次 cursor = 0, size = 2</span><br><span class="hljs-comment">//第二次 cursor = 1, size = 2</span><br><span class="hljs-comment">//第三次 cursor = 2, size = 1, 因为remove一个元素导致return true</span><br></code></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> E <span class="hljs-title">next</span><span class="hljs-params">()</span> </span>&#123;<br>    checkForComodification();<br>    <span class="hljs-keyword">int</span> i = cursor;<br>    <span class="hljs-keyword">if</span> (i &gt;= size)<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> NoSuchElementException();<br>    Object[] elementData = ArrayList.<span class="hljs-keyword">this</span>.elementData;<br>    <span class="hljs-keyword">if</span> (i &gt;= elementData.length)<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ConcurrentModificationException();<br>    cursor = i + <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">return</span> (E) elementData[lastRet = i];<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">final</span> <span class="hljs-keyword">void</span> <span class="hljs-title">checkForComodification</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-comment">//不相等，则抛出ConcurrentModificationException异常</span><br>    <span class="hljs-keyword">if</span> (modCount != expectedModCount)<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ConcurrentModificationException();<br>&#125;<br></code></pre></td></tr></table></figure></li>
-<li><p>list的remove方法，add方法，会进行modCount++，但expectedModCount不修改</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">remove</span><span class="hljs-params">(Object o)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (o == <span class="hljs-keyword">null</span>) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> index = <span class="hljs-number">0</span>; index &lt; size; index++)<br>            <span class="hljs-keyword">if</span> (elementData[index] == <span class="hljs-keyword">null</span>) &#123;<br>                fastRemove(index);<br>                <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;<br>            &#125;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> index = <span class="hljs-number">0</span>; index &lt; size; index++)<br>            <span class="hljs-keyword">if</span> (o.equals(elementData[index])) &#123;<br>                fastRemove(index);<br>                <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;<br>            &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">fastRemove</span><span class="hljs-params">(<span class="hljs-keyword">int</span> index)</span> </span>&#123;<br>    <span class="hljs-comment">//modCount++，导致与expectedModCount不相等</span><br>    modCount++;<br>    <span class="hljs-keyword">int</span> numMoved = size - index - <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">if</span> (numMoved &gt; <span class="hljs-number">0</span>)<br>        System.arraycopy(elementData, index+<span class="hljs-number">1</span>, elementData, index,<br>                         numMoved);<br>    elementData[--size] = <span class="hljs-keyword">null</span>; <span class="hljs-comment">// clear to let GC do its work</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
-</ol>
-<h3 id="2-remove元素使用Iterator方式"><a href="#2-remove元素使用Iterator方式" class="headerlink" title="2.remove元素使用Iterator方式"></a>2.remove元素使用Iterator方式</h3><p>iterator的remove方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">remove</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (lastRet &lt; <span class="hljs-number">0</span>)<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalStateException();<br>    checkForComodification();<br><br>    <span class="hljs-keyword">try</span> &#123;<br>        ArrayList.<span class="hljs-keyword">this</span>.remove(lastRet);<br>        cursor = lastRet;<br>        lastRet = -<span class="hljs-number">1</span>;<br>		<span class="hljs-comment">//将expectedModCount赋值为modCount</span><br>        expectedModCount = modCount;<br>    &#125; <span class="hljs-keyword">catch</span> (IndexOutOfBoundsException ex) &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ConcurrentModificationException();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> E <span class="hljs-title">remove</span><span class="hljs-params">(<span class="hljs-keyword">int</span> index)</span> </span>&#123;<br>    rangeCheck(index);<br><br>    modCount++;<br>    E oldValue = elementData(index);<br><br>    <span class="hljs-keyword">int</span> numMoved = size - index - <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">if</span> (numMoved &gt; <span class="hljs-number">0</span>)<br>        System.arraycopy(elementData, index+<span class="hljs-number">1</span>, elementData, index,<br>                         numMoved);<br>    elementData[--size] = <span class="hljs-keyword">null</span>; <span class="hljs-comment">// clear to let GC do its work</span><br><br>    <span class="hljs-keyword">return</span> oldValue;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">final</span> <span class="hljs-keyword">void</span> <span class="hljs-title">checkForComodification</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-comment">//相等，则不抛出异常</span><br>    <span class="hljs-keyword">if</span> (modCount != expectedModCount)<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ConcurrentModificationException();<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>不要在foreach循环里进行元素的remove/add操作。remove元素请使用Iterator方式，如果并发操作，需要对Iterator对象加锁。</p>
+              <h2 id="一"><a href="#一" class="headerlink" title="一"></a>一</h2><p>绝地求生游戏开始时,玩家会先进行跳伞。跳伞前，玩家可以选择跟随另一名玩家跳伞或自己跳伞(等价于跟随白己)。初始时所有玩家默认自己跳伞，随后可以自由进行跟随或取消跟随操作，若A跟随B，则A及当前跟随A的玩家一起变为跟随B;若A取消跟随B，则A变为跟随白己,其余跟随B的玩家保持不变。我们称跟随同一个玩家的所有玩家(包括被跟随的玩家）为一个团队，请问进行—系列跟随和取消跟随的操作后,最大的团队有多少人?</p>
+<p><strong>问题描述：</strong></p>
+<p>第一行输入为N、R,其中N为玩家数(玩家序号为1~N)，K为跟随和取消跟随的总操作次数</p>
+<p>接下来R行表示R次按时间顺序排列的跟随和取消跟随操作，每行两个元素A、B:若B大于o，代表A跟随B;同时若A=B，则维持不变，若B等于o，代表A取消跟随。</p>
+<p>1&lt;= N,K&lt;=1e7,1&lt;=A&lt;= N,O&lt;= B&lt;=N</p>
+<p><strong>输出描述：</strong></p>
+<p>输出最大团队的人数</p>
+<p><strong>输入：</strong></p>
+<p>5    6</p>
+<p>4    3</p>
+<p>3    2</p>
+<p>3    0</p>
+<p>5    3</p>
+<p>3    1</p>
+<p>5    5</p>
+<p><strong>输出：</strong></p>
+<p>3</p>
+<h2 id="二"><a href="#二" class="headerlink" title="二"></a>二</h2><p>从吴天宗离开的唐三，前往星斗大森林寻找小舞,进入星斗大森林后,由于魂兽们的反常表现,警觉的唐三开启了蓝银领域进行洞察,蓝银领域发现了小舞所在的位置,同时也发现了武魂殿的高级魂师,假设此时唐三所在的位置是（0,0)，小舞所在的位置是(M,N),数名高级魂师遍布在唐三寻找小舞的道路上,位置分别是(M1，N1)、(M2，N2)等,如果唐三的位置与高级魂师的曼哈顿距离小于等于1，就会被高级魂师发现,请问唐三有多少条路径可以在高级魂师无法察觉的情况下寻找到小舞?</p>
+<p><strong>问题描述：</strong></p>
+<p>第一行四个整数r,N,K， P;分别表示小舞所在的坐标（M,N)以及高级魂师数K;</p>
+<p>后面K行，每行两个整数，分别表示魂师所在的坐标(M_i,N_i);</p>
+<p>注：</p>
+<p>1.0&lt;M&lt;=1000 and 0&lt;N&lt;=1000，0&lt;=M_i&lt;=M and 0&lt;=N_i&lt;=N,且(M_i，N_i）!=(0，0）,0≤K≤1000</p>
+<p>2.高级魂师停留在原地休息,不会移动</p>
+<p>3.唐三只能在[0，M]，[0，N]这个矩形区域内移动,并且移动方向固定，在x轴和Y轴上向+1方向移动</p>
+<p><strong>输出描述：</strong></p>
+<p>输出一个整数，结果为：点路径数 % P</p>
+<p><strong>输入：</strong></p>
+<p>5    5    3    100</p>
+<p>0    2</p>
+<p>3    5</p>
+<p>4    2</p>
+<p><strong>输出：</strong></p>
+<p>0</p>
+<h2 id="三"><a href="#三" class="headerlink" title="三"></a>三</h2><p>有n个人需要进城，每次进城只能是1或者2个人，而且必须每次携带「通关令」才能进城和出城。通关令只有一个，所以每次进城后的人需要把通关令送出城。</p>
+<p>每人进城出城都需要不同天数，「进城」和「出城」时间是一样的,当2个人一起进城所需要的天数等于其中较慢的一个。</p>
+<p>你的任务:找出在最短天数内使所有人都进城的解决方案。</p>
+<p><strong>问题描述：</strong></p>
+<p>第一行有一个整数 n，接下来由n行，每一行给出每人的进出城时间n(天)，人数不超过10000个，每个人的进出城天数不超过1000天。</p>
+<p><strong>输出描述：</strong></p>
+<p>第一行输出所有人都进到城里的总时间。接下来进出城的具体方案,每一行有1个或者2个整数，代表1个人或者2个人的进出城。每个人用进出城天数代表,虽然可能每一个人进出城时间相同,但是这个不重要。</p>
+<p><strong>输入：</strong></p>
+<p>6</p>
+<p>4</p>
+<p>1</p>
+<p>1</p>
+<p>7</p>
+<p>2</p>
+<p>10</p>
+<p><strong>输出：</strong></p>
+<p>21</p>
+<p>1    1</p>
+<p>1</p>
+<p>7    10</p>
+<p>1</p>
+<p>1    1</p>
+<p>1</p>
+<p>2    4</p>
+<p>1</p>
+<p>1    1</p>
+<h2 id="四"><a href="#四" class="headerlink" title="四"></a>四</h2><p>某景区有N个景点,M条石子路。<br>景区经理决定在A景点到B景点的所有最短石子路径上铺沥青。求一共需要铺多少米的沥青。</p>
+<p><strong>问题描述：</strong></p>
+<p>共M+1行。<br>第1行是两个整数:N(1&lt;= N&lt;=1000)和M(1&lt;=M&lt;=((N-1)*N)/2)。<br>第⒉行到第M+1行，每行有三个整数。分别为F(1&lt;= F&lt;= N)、T(1&lt;= T&lt;= N)、w(1&lt;= w&lt;= 10)，表示F和T 之间有一条长度为 w的石子路。A景点的编号为1，B景点的编号为N。(F != T)</p>
+<p><strong>输出描述：</strong></p>
+<p>一个整数，总共需要铺沥青的石子路长度。</p>
+<p><strong>输入：</strong></p>
+<p>5    6</p>
+<p>1    2    4</p>
+<p>2    4    2</p>
+<p>1    3    2</p>
+<p>3    4    4</p>
+<p>1    4    7</p>
+<p>4    5    1</p>
+<p><strong>输出：</strong></p>
+<p>13</p>
 
               
             </div>
@@ -309,7 +356,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/JAVA%E9%9B%86%E5%90%88/">#JAVA集合</a>
+        <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
       
     </div>
   
@@ -321,8 +368,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>remove元素请使用Iterator</div>
-      <div>http://example.com/2022/06/30/removeList/</div>
+      <div>ByteDany</div>
+      <div>http://example.com/2022/07/06/ByteDance/</div>
     </div>
     <div class="license-meta">
       
@@ -334,7 +381,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年6月30日</div>
+          <div>2022年7月6日</div>
         </div>
       
       
@@ -364,18 +411,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/07/06/ByteDance/" title="ByteDany">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">ByteDany</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/06/26/SwordOffer/" title="剑指Offer（一）">
-                        <span class="hidden-mobile">剑指Offer（一）</span>
+                      <a href="/2022/06/30/removeList/" title="remove元素请使用Iterator">
+                        <span class="hidden-mobile">remove元素请使用Iterator</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
