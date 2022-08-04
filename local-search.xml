@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>接口和抽象类</title>
+    <link href="/2022/08/04/absAndInt/"/>
+    <url>/2022/08/04/absAndInt/</url>
+    
+    <content type="html"><![CDATA[<h2 id="接口和抽象类"><a href="#接口和抽象类" class="headerlink" title="接口和抽象类"></a>接口和抽象类</h2><table><thead><tr><th align="center"></th><th align="center">抽象类</th><th align="center">接口</th></tr></thead><tbody><tr><td align="center">构造方法</td><td align="center">有，用于子类实例化使用</td><td align="center">没有</td></tr><tr><td align="center">成员变量</td><td align="center">变量、常量</td><td align="center">常量（public static final）</td></tr><tr><td align="center">成员方法</td><td align="center">抽象、非抽象</td><td align="center">抽象（public abstract）</td></tr><tr><td align="center">类与类</td><td align="center">单继承</td><td align="center">多实现</td></tr><tr><td align="center">概念</td><td align="center">对行为的抽象</td><td align="center">对根源的抽象</td></tr></tbody></table><p>共同点：</p><ul><li>都不能被实例化。</li><li>都可以包含抽象方法。</li><li>都可以有默认实现的方法（Java 8 可以用 <code>default</code> 关键字在接口中定义默认方法）。</li></ul>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Java</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>ByteDance</title>
     <link href="/2022/07/06/ByteDance/"/>
     <url>/2022/07/06/ByteDance/</url>
