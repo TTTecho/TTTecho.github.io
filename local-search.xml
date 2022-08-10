@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>分布式锁和定时任务</title>
+    <link href="/2022/08/10/distribution/"/>
+    <url>/2022/08/10/distribution/</url>
+    
+    <content type="html"><![CDATA[<h2 id="分布式锁和定时任务"><a href="#分布式锁和定时任务" class="headerlink" title="分布式锁和定时任务"></a>分布式锁和定时任务</h2><h3 id="1-分布式锁"><a href="#1-分布式锁" class="headerlink" title="1.分布式锁"></a>1.分布式锁</h3><p>随着业务发展的需要，原单体单机部署的系统被演化成分布式集群系统后，由于分布式系统多线程、多进程并且分布在不同机器上，这将使原单机部署情况下的并发控制锁策略失效，单纯的Java API并不能提供分布式锁的能力。为了解决这个问题就需要一种跨JVM的互斥机制来控制共享资源的访问,Redis分布式锁就是做这个工作的。</p><p><strong>什么是分布式锁？在回答这个问题之前，我们先回答一下什么是锁。</strong></p><p>普通的锁，即在单机多线程环境下，当多个线程需要访问同一个变量或代码片段时，被访问的变量或代码片段叫做临界区域，我们需要控制线程一个一个的顺序执行，否则会出现并发问题。</p><p>如何控制呢？就是设置一个各个线程都能看的见的标志。然后，每个线程想访问临界区域时，都要先查看标志，如果标志没有被占用，则说明目前没有线程在访问临界区域。如果标志被占用了，则说明目前有线程正在访问临界区域，则当前线程需要等待。</p><p>这个标志，就是锁。</p><p>在单机多线程的java程序中，我们可以使用堆内存中的变量作为标志，因为多线程是共享堆内存的，堆内存中的变量对于各个线程都是可见的。</p><p><strong>讲明白了普通的锁，接下来，我们再看看分布式锁。</strong></p><p>在分布式环境下，即多台计算机，每个计算机上会启动jvm执行程序的运行环境下，如果不同计算机上的线程想访问临界区域时，该怎么办呢？</p><p>前面普通锁的使用堆内存中的变量的方式肯定不适用了。因为在多机环境下，某台计算机上的堆内存中的变量对于其他计算机上的线程肯定是不可见的。那么，根据锁的本质和原理，我们就要找到另外的对于多机上的线程都可见的标志，以它来作为锁，就可以了。这样的锁，就是分布式锁。</p><p>当然，这里只是解释了什么是分布式锁，至于分布式锁该如何实现，其实有多重方式，关键在于要保证锁对多机上的程序是可见的即可。一些常用的实现方式是，使用redis，使用数据库等等。</p><p><strong>分布式锁应该具备哪些条件：</strong></p><ol><li>在分布式系统环境下，一个方法在同一时间只能被一个机器的一个线程执行； </li><li>高可用的获取锁与释放锁； </li><li>高性能的获取锁与释放锁； </li><li>具备可重入特性； </li><li>具备锁失效机制，防止死锁； </li><li>具备非阻塞锁特性，即没有获取到锁将直接返回获取锁失败。</li></ol><p><a href="https://blog.csdn.net/wuzhiwei549/article/details/80692278?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522166001031016782184649679%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=166001031016782184649679&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-80692278-null-null.142%5Ev39%5Epc_rank_34_2,185%5Ev2%5Econtrol&utm_term=%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81&spm=1018.2226.3001.4187">三种实现分布式锁的方式</a></p><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/529eb434dc524f90ad88c7851aeb50e5~tplv-k3u1fbpfcp-zoom-1.image"></p><p><a href="https://blog.csdn.net/qq_35620342/article/details/119596776?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522166001031016782184649679%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=166001031016782184649679&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_click~default-4-119596776-null-null.142%5Ev39%5Epc_rank_34_2,185%5Ev2%5Econtrol&utm_term=%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81&spm=1018.2226.3001.4187">Redis分布式锁</a></p><h3 id="2-定时任务"><a href="#2-定时任务" class="headerlink" title="2.定时任务"></a>2.定时任务</h3><p><a href="https://blog.csdn.net/qq_26383975/article/details/119387964?ops_request_misc=%7B%22request_id%22:%22166002803916782184631798%22,%22scm%22:%2220140713.130102334.pc_blog.%22%7D&request_id=166002803916782184631798&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~blog~first_rank_ecpm_v1~rank_v31_ecpm-1-119387964-null-null.nonecase&utm_term=%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1&spm=1018.2226.3001.4450">Spring boot实现<em>定时任务</em>一：集成Quartz</a></p><p><a href="https://blog.csdn.net/qq_26383975/article/details/119409780?ops_request_misc=%7B%22request_id%22:%22166002803916782184631798%22,%22scm%22:%2220140713.130102334.pc_blog.%22%7D&request_id=166002803916782184631798&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~blog~first_rank_ecpm_v1~rank_v31_ecpm-2-119409780-null-null.nonecase&utm_term=%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1&spm=1018.2226.3001.4450">Spring boot实现<em>定时任务</em>二：使用注解@scheduled和@EnableScheduling</a></p><p><a href="https://blog.csdn.net/qq_26383975/article/details/119536228?ops_request_misc=%7B%22request_id%22:%22166002803916782184631798%22,%22scm%22:%2220140713.130102334.pc_blog.%22%7D&request_id=166002803916782184631798&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~blog~first_rank_ecpm_v1~rank_v31_ecpm-3-119536228-null-null.nonecase&utm_term=%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1">Spring boot实现<em>定时任务</em>三：实现SchedulingConfigurer接口(动态<em>定时任务</em>)</a></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>分布式</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>解决MyBatis一对多分页查询数据不匹配的问题</title>
     <link href="/2022/08/08/MyBatisPage/"/>
     <url>/2022/08/08/MyBatisPage/</url>
