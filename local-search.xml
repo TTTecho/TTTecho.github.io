@@ -252,8 +252,8 @@
   
   <entry>
     <title>Java中isEmpty、null和&quot;&quot;的区别</title>
-    <link href="/2022/01/17/algorithm/"/>
-    <url>/2022/01/17/algorithm/</url>
+    <link href="/2022/01/17/isEmptyOrNull/"/>
+    <url>/2022/01/17/isEmptyOrNull/</url>
     
     <content type="html"><![CDATA[<p>Java中isEmpty、null和””的区别</p><span id="more"></span><h2 id="Java中isEmpty、null和””的区别"><a href="#Java中isEmpty、null和””的区别" class="headerlink" title="Java中isEmpty、null和””的区别:"></a>Java中isEmpty、null和””的区别:</h2><h3 id="isEmpty"><a href="#isEmpty" class="headerlink" title="isEmpty()"></a>isEmpty()</h3><p>分配了内存空间，值为空，是绝对的空，是一种有值（值 = 空)</p><h3 id="“”"><a href="#“”" class="headerlink" title="“”"></a>“”</h3><p>分配了内存空间，值为空字符串，是相对的空，是一种有值（值 = 空字串）  </p><h3 id="null"><a href="#null" class="headerlink" title="null"></a>null</h3><p>是未分配内存空间，无值，是一种无值(值不存在)</p>]]></content>
     
