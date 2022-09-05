@@ -16,15 +16,15 @@
   <meta name="author" content="Echo">
   <meta name="keywords" content="">
   
-    <meta name="description" content="hit">
+    <meta name="description" content="一绝地求生游戏开始时,玩家会先进行跳伞。跳伞前，玩家可以选择跟随另一名玩家跳伞或自己跳伞(等价于跟随白己)。初始时所有玩家默认自己跳伞，随后可以自由进行跟随或取消跟随操作，若A跟随B，则A及当前跟随A的玩家一起变为跟随B;若A取消跟随B，则A变为跟随白己,其余跟随B的玩家保持不变。我们称跟随同一个玩家的所有玩家(包括被跟随的玩家）为一个团队，请问进行—系列跟随和取消跟随的操作后,最大的团队有多少人">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ByteDance">
 <meta property="og:url" content="http://example.com/2022/07/06/ByteDance/index.html">
 <meta property="og:site_name" content="TTTecho">
-<meta property="og:description" content="hit">
+<meta property="og:description" content="一绝地求生游戏开始时,玩家会先进行跳伞。跳伞前，玩家可以选择跟随另一名玩家跳伞或自己跳伞(等价于跟随白己)。初始时所有玩家默认自己跳伞，随后可以自由进行跟随或取消跟随操作，若A跟随B，则A及当前跟随A的玩家一起变为跟随B;若A取消跟随B，则A变为跟随白己,其余跟随B的玩家保持不变。我们称跟随同一个玩家的所有玩家(包括被跟随的玩家）为一个团队，请问进行—系列跟随和取消跟随的操作后,最大的团队有多少人">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-07-06T13:24:44.331Z">
-<meta property="article:modified_time" content="2022-07-16T15:35:11.248Z">
+<meta property="article:modified_time" content="2022-09-05T14:01:19.152Z">
 <meta property="article:author" content="Echo">
 <meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary_large_image">
@@ -278,15 +278,11 @@
 <p><strong>输出描述：</strong></p>
 <p>输出最大团队的人数</p>
 <p><strong>输入：</strong></p>
-<p>5    6</p>
-<p>4    3</p>
-<p>3    2</p>
-<p>3    0</p>
-<p>5    3</p>
-<p>3    1</p>
-<p>5    5</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">5</span>	<span class="hljs-number">6</span><br><span class="hljs-attribute">4</span>	<span class="hljs-number">3</span><br><span class="hljs-attribute">3</span>	<span class="hljs-number">2</span><br><span class="hljs-attribute">3</span>	<span class="hljs-number">0</span><br><span class="hljs-attribute">5</span>	<span class="hljs-number">3</span><br><span class="hljs-attribute">3</span>	<span class="hljs-number">1</span><br><span class="hljs-attribute">5</span>	<span class="hljs-number">5</span><br></code></pre></td></tr></table></figure>
+
 <p><strong>输出：</strong></p>
-<p>3</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">3<br></code></pre></td></tr></table></figure>
+
 <h2 id="二"><a href="#二" class="headerlink" title="二"></a>二</h2><p>从吴天宗离开的唐三，前往星斗大森林寻找小舞,进入星斗大森林后,由于魂兽们的反常表现,警觉的唐三开启了蓝银领域进行洞察,蓝银领域发现了小舞所在的位置,同时也发现了武魂殿的高级魂师,假设此时唐三所在的位置是（0,0)，小舞所在的位置是(M,N),数名高级魂师遍布在唐三寻找小舞的道路上,位置分别是(M1，N1)、(M2，N2)等,如果唐三的位置与高级魂师的曼哈顿距离小于等于1，就会被高级魂师发现,请问唐三有多少条路径可以在高级魂师无法察觉的情况下寻找到小舞?</p>
 <p><strong>问题描述：</strong></p>
 <p>第一行四个整数r,N,K， P;分别表示小舞所在的坐标（M,N)以及高级魂师数K;</p>
@@ -298,12 +294,11 @@
 <p><strong>输出描述：</strong></p>
 <p>输出一个整数，结果为：点路径数 % P</p>
 <p><strong>输入：</strong></p>
-<p>5    5    3    100</p>
-<p>0    2</p>
-<p>3    5</p>
-<p>4    2</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">5</span>	<span class="hljs-number">5</span>	<span class="hljs-number">3</span>	<span class="hljs-number">100</span><br><span class="hljs-attribute">0</span>	<span class="hljs-number">2</span><br><span class="hljs-attribute">3</span>	<span class="hljs-number">5</span><br><span class="hljs-attribute">4</span>	<span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
+
 <p><strong>输出：</strong></p>
-<p>0</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">0<br></code></pre></td></tr></table></figure>
+
 <h2 id="三"><a href="#三" class="headerlink" title="三"></a>三</h2><p>有n个人需要进城，每次进城只能是1或者2个人，而且必须每次携带「通关令」才能进城和出城。通关令只有一个，所以每次进城后的人需要把通关令送出城。</p>
 <p>每人进城出城都需要不同天数，「进城」和「出城」时间是一样的,当2个人一起进城所需要的天数等于其中较慢的一个。</p>
 <p>你的任务:找出在最短天数内使所有人都进城的解决方案。</p>
@@ -312,40 +307,21 @@
 <p><strong>输出描述：</strong></p>
 <p>第一行输出所有人都进到城里的总时间。接下来进出城的具体方案,每一行有1个或者2个整数，代表1个人或者2个人的进出城。每个人用进出城天数代表,虽然可能每一个人进出城时间相同,但是这个不重要。</p>
 <p><strong>输入：</strong></p>
-<p>6</p>
-<p>4</p>
-<p>1</p>
-<p>1</p>
-<p>7</p>
-<p>2</p>
-<p>10</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs">6<br>4<br>1<br>1<br>7<br>2<br>10<br></code></pre></td></tr></table></figure>
+
 <p><strong>输出：</strong></p>
-<p>21</p>
-<p>1    1</p>
-<p>1</p>
-<p>7    10</p>
-<p>1</p>
-<p>1    1</p>
-<p>1</p>
-<p>2    4</p>
-<p>1</p>
-<p>1    1</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">21</span><br><span class="hljs-attribute">1</span>	<span class="hljs-number">1</span><br><span class="hljs-attribute">1</span><br><span class="hljs-attribute">7</span>	<span class="hljs-number">10</span><br><span class="hljs-attribute">1</span><br><span class="hljs-attribute">1</span>	<span class="hljs-number">1</span><br><span class="hljs-attribute">1</span><br><span class="hljs-attribute">2</span>	<span class="hljs-number">4</span><br><span class="hljs-attribute">1</span><br><span class="hljs-attribute">1</span>	<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
 <h2 id="四"><a href="#四" class="headerlink" title="四"></a>四</h2><p>某景区有N个景点,M条石子路。<br>景区经理决定在A景点到B景点的所有最短石子路径上铺沥青。求一共需要铺多少米的沥青。</p>
 <p><strong>问题描述：</strong></p>
 <p>共M+1行。<br>第1行是两个整数:N(1&lt;= N&lt;=1000)和M(1&lt;=M&lt;=((N-1)*N)/2)。<br>第⒉行到第M+1行，每行有三个整数。分别为F(1&lt;= F&lt;= N)、T(1&lt;= T&lt;= N)、w(1&lt;= w&lt;= 10)，表示F和T 之间有一条长度为 w的石子路。A景点的编号为1，B景点的编号为N。(F != T)</p>
 <p><strong>输出描述：</strong></p>
 <p>一个整数，总共需要铺沥青的石子路长度。</p>
 <p><strong>输入：</strong></p>
-<p>5    6</p>
-<p>1    2    4</p>
-<p>2    4    2</p>
-<p>1    3    2</p>
-<p>3    4    4</p>
-<p>1    4    7</p>
-<p>4    5    1</p>
-<p><strong>输出：</strong></p>
-<p>13</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">5</span>	<span class="hljs-number">6</span><br><span class="hljs-attribute">1</span>	<span class="hljs-number">2</span>	<span class="hljs-number">4</span><br><span class="hljs-attribute">2</span>	<span class="hljs-number">4</span>	<span class="hljs-number">2</span><br><span class="hljs-attribute">1</span>	<span class="hljs-number">3</span>	<span class="hljs-number">2</span><br><span class="hljs-attribute">3</span>	<span class="hljs-number">4</span>	<span class="hljs-number">4</span><br><span class="hljs-attribute">1</span>	<span class="hljs-number">4</span>	<span class="hljs-number">7</span><br><span class="hljs-attribute">4</span>	<span class="hljs-number">5</span>	<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
 
+<p><strong>输出：</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">13<br></code></pre></td></tr></table></figure>
               
             </div>
             <hr/>
@@ -411,9 +387,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/08/04/absAndInt/" title="接口和抽象类">
+                      <a href="/2022/08/04/%E6%8E%A5%E5%8F%A3%E5%92%8C%E6%8A%BD%E8%B1%A1%E7%B1%BB/" title="接口和抽象类的相同点和区别">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">接口和抽象类</span>
+                        <span class="hidden-mobile">接口和抽象类的相同点和区别</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -421,7 +397,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/06/30/removeList/" title="remove元素请使用Iterator">
+                      <a href="/2022/06/30/remove%E5%85%83%E7%B4%A0%E8%AF%B7%E4%BD%BF%E7%94%A8Iterator/" title="remove元素请使用Iterator">
                         <span class="hidden-mobile">remove元素请使用Iterator</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>

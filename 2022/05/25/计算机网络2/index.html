@@ -1,0 +1,1128 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Echo">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="一些相互连接的、以共享资源为目的的、自治的计算机的集合。所听课程为MOOC上哈尔滨工业大学的计算机网络，授课老师为李全龙和聂兰顺。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络（二）">
+<meta property="og:url" content="http://example.com/2022/05/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C2/index.html">
+<meta property="og:site_name" content="TTTecho">
+<meta property="og:description" content="一些相互连接的、以共享资源为目的的、自治的计算机的集合。所听课程为MOOC上哈尔滨工业大学的计算机网络，授课老师为李全龙和聂兰顺。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimgs.itxueyuan.com%2F737467-20210219161222208-1421812801.png&refer=http%3A%2F%2Fimgs.itxueyuan.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1655813402&t=e1956e3e5f7b9adbb8188e35a7c7dbcf">
+<meta property="og:image" content="http://mms2.baidu.com/it/u=4104751731,3333378823&fm=253&app=138&f=JPEG&fmt=auto&q=75?w=1118&h=341">
+<meta property="og:image" content="http://mms2.baidu.com/it/u=4104751731,3333378823&fm=253&app=138&f=JPEG&fmt=auto&q=75?w=1118&h=341">
+<meta property="og:image" content="http://mms0.baidu.com/it/u=946332981,2792023099&fm=253&app=138&f=JPEG&fmt=auto&q=75?w=970&h=500">
+<meta property="og:image" content="http://mms0.baidu.com/it/u=3506952241,2034148706&fm=253&app=138&f=PNG&fmt=auto&q=75?w=778&h=500">
+<meta property="og:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg-blog.csdnimg.cn%2F2021020617202998.png%3Fx-oss-process%3Dimage%2Fwatermark%2Ctype_ZmFuZ3poZW5naGVpdGk%2Cshadow_10%2Ctext_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NTgzNDUw%2Csize_16%2Ccolor_FFFFFF%2Ct_70%23pic_center&refer=http%3A%2F%2Fimg-blog.csdnimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1655881532&t=52088847de760e4e68ee971170e2a8c4">
+<meta property="og:image" content="http://mms0.baidu.com/it/u=3676435238,734003736&fm=253&app=138&f=PNG&fmt=auto&q=75?w=916&h=500">
+<meta property="og:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg-blog.csdnimg.cn%2F20181104140430928.png%3Fx-oss-process%3Dimage%2Fwatermark%2Ctype_ZmFuZ3poZW5naGVpdGk%2Cshadow_10%2Ctext_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0ZpZ2h0aW5nX05vMQ%3D%3D%2Csize_16%2Ccolor_FFFFFF%2Ct_70&refer=http%3A%2F%2Fimg-blog.csdnimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1655883001&t=56f504ea5096330bf1453c1a7928be2c">
+<meta property="og:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwww.w3xue.com%2Ffiles%2Fa20203%2F20200324114749397.png&refer=http%3A%2F%2Fwww.w3xue.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1655883153&t=96edbae358001e23361f8d067d171c6b">
+<meta property="og:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.shangdixinxi.com%2Fup%2Finfo%2F201910%2F20191024125251520769.png&refer=http%3A%2F%2Fimg.shangdixinxi.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1655883181&t=ea27898fb4c54ff5a7bad9680b625d61">
+<meta property="og:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fupload-images.jianshu.io%2Fupload_images%2F16869092-ae50a5d973bbe632.PNG&refer=http%3A%2F%2Fupload-images.jianshu.io&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1655883511&t=c58dbf8388ef8abb693887a1765505d7">
+<meta property="og:image" content="http://mms0.baidu.com/it/u=3449954409,2587773228&fm=253&app=138&f=JPEG&fmt=auto&q=75?w=865&h=500">
+<meta property="og:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fs2.51cto.com%2Fimages%2F202110%2F099499088b786f18bc15945e4599e294cb4918.jpg%3Fx-oss-process%3Dimage%2Fwatermark%2Csize_14%2Ctext_QDUxQ1RP5Y2a5a6i%2Ccolor_FFFFFF%2Ct_100%2Cg_se%2Cx_10%2Cy_10%2Cshadow_20%2Ctype_ZmFuZ3poZW5naGVpdGk%3D&refer=http%3A%2F%2Fs2.51cto.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1655904203&t=226ac6b01fec2207c2176ca627d04684">
+<meta property="og:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwww.pianshen.com%2Fimages%2F8%2Fcb31229877e8009e090a8ee605826928.png&refer=http%3A%2F%2Fwww.pianshen.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1655904533&t=f6daf50b09482e2d5644b50e8c490c50">
+<meta property="og:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fs2.ax1x.com%2F2020%2F02%2F12%2F1HKi8O.png&refer=http%3A%2F%2Fs2.ax1x.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1655904956&t=7f8efe9066c01c5b4e9ba199b4bba140">
+<meta property="og:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fs1.ax1x.com%2F2020%2F06%2F28%2FN2wTqf.png&refer=http%3A%2F%2Fs1.ax1x.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1655905533&t=613e8cd5542a58eab978e967c33841b4">
+<meta property="og:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg-blog.csdnimg.cn%2F20201225115814453.png%3Fx-oss-process%3Dimage%2Fwatermark%2Ctype_ZmFuZ3poZW5naGVpdGk%2Cshadow_10%2Ctext_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L29saXZpYTEyMzQ0MzIx%2Csize_16%2Ccolor_FFFFFF%2Ct_70&refer=http%3A%2F%2Fimg-blog.csdnimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1655905876&t=41c1f6d92b7f58511892e251cdb6669b">
+<meta property="og:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg-blog.csdnimg.cn%2F20200502194113582.png%3Fx-oss-process%3Dimage%2Ctype_ZmFuZ3poZW5naGVpdGk%2Cshadow_10%2Ctext_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNzMzNDk5%2Csize_16%2Ccolor_FFFFFF%2Ct_70&refer=http%3A%2F%2Fimg-blog.csdnimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1655905960&t=85276887e26f18ba906aa3b78b84d403">
+<meta property="og:image" content="http://mms1.baidu.com/it/u=917276260,888314558&fm=253&app=138&f=PNG&fmt=auto&q=75?w=1345&h=500">
+<meta property="og:image" content="http://mms0.baidu.com/it/u=3978987848,1662011284&fm=253&app=138&f=PNG&fmt=auto&q=75?w=467&h=305">
+<meta property="og:image" content="http://mms1.baidu.com/it/u=3058319925,3367710645&fm=253&app=138&f=PNG&fmt=auto&q=75?w=1057&h=316">
+<meta property="og:image" content="http://mms0.baidu.com/it/u=3871246119,357947636&fm=253&app=138&f=JPEG&fmt=auto&q=75?w=847&h=500">
+<meta property="article:published_time" content="2022-05-25T11:40:49.391Z">
+<meta property="article:modified_time" content="2022-05-25T02:54:44.332Z">
+<meta property="article:author" content="Echo">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimgs.itxueyuan.com%2F737467-20210219161222208-1421812801.png&refer=http%3A%2F%2Fimgs.itxueyuan.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1655813402&t=e1956e3e5f7b9adbb8188e35a7c7dbcf">
+  
+  
+  
+  <title>计算机网络（二） - TTTecho</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>TTTecho</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="计算机网络（二）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-05-25 19:40" pubdate>
+          2022年5月25日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          49 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">计算机网络（二）</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="4-网络层"><a href="#4-网络层" class="headerlink" title="4.网络层"></a>4.网络层</h2><ul>
+<li>从发送主机向接收主机传送数据段（segment）</li>
+<li><strong>发送主机</strong>：将数据段封装到数据报（datagram）中</li>
+<li><strong>接收主机</strong>：向传输层交付数据段</li>
+<li>每个主机和路由器都运行网络层协议</li>
+<li>路由器检验所有穿越它的IP数据报的头部域：决策如何处理IP数据报</li>
+</ul>
+<p>网络层的核心功能：转发与路由</p>
+<ul>
+<li><strong>转发</strong>：将分组从路由器的输入端口转移到合适的输出端口</li>
+<li><strong>路由</strong>：确定分组从源到目的经过的路径，由路由算法确定</li>
+</ul>
+<p><strong>无连接服务：数据报网络</strong></p>
+<ul>
+<li>不事先为系列分组的传输确定传输路径</li>
+<li>每个分组独立确定传输路径</li>
+<li>不同分组可能传输路径不同</li>
+</ul>
+<p><strong>连接服务：虚电路网络</strong></p>
+<ul>
+<li>首先为系列分组的传输确定从源到目的经过的路径（建立连接）</li>
+<li>然后沿着路径（连接）传输系列分组</li>
+<li>系列分组传输路径相同</li>
+<li>传输结束后拆除连接</li>
+</ul>
+<p>数据报网络和虚电路网络均是典型的分组交换网络</p>
+<h3 id="4-1虚电路网络与数据报网络"><a href="#4-1虚电路网络与数据报网络" class="headerlink" title="4.1虚电路网络与数据报网络"></a>4.1虚电路网络与数据报网络</h3><h4 id="4-1-1虚电路网络"><a href="#4-1-1虚电路网络" class="headerlink" title="4.1.1虚电路网络"></a>4.1.1虚电路网络</h4><p>一条从源到目的主机，类似于电路的路径（逻辑类似）</p>
+<ul>
+<li>分组交换</li>
+<li>每个分组的传输利用链路的全部带宽</li>
+<li>源到目的路径经过的网络层设备共同完成虚电路功能</li>
+</ul>
+<img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimgs.itxueyuan.com%2F737467-20210219161222208-1421812801.png&refer=http%3A%2F%2Fimgs.itxueyuan.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1655813402&t=e1956e3e5f7b9adbb8188e35a7c7dbcf" srcset="/img/loading.gif" lazyload style="zoom:67%;">
+
+<p><strong>虚电路信令协议</strong>：</p>
+<ul>
+<li>用于VC的建立，维护与拆除，路径选择</li>
+<li>应用于虚电路网络，如ATM、帧中继等</li>
+<li>目前Internet不采用</li>
+</ul>
+<p><img src="http://mms2.baidu.com/it/u=4104751731,3333378823&fm=253&app=138&f=JPEG&fmt=auto&q=75?w=1118&h=341" srcset="/img/loading.gif" lazyload></p>
+<h4 id="4-1-2数据报网络"><a href="#4-1-2数据报网络" class="headerlink" title="4.1.2数据报网络"></a>4.1.2数据报网络</h4><ul>
+<li>网络层无连接</li>
+<li>每个分组携带目的地址</li>
+<li>路由器根据分组的目的地址转发分组：<ul>
+<li>基于路由协议/算法构建转发表</li>
+<li>检索转发表</li>
+<li>每个分组独立选路</li>
+</ul>
+</li>
+</ul>
+<p><img src="http://mms2.baidu.com/it/u=4104751731,3333378823&fm=253&app=138&f=JPEG&fmt=auto&q=75?w=1118&h=341" srcset="/img/loading.gif" lazyload></p>
+<p><img src="http://mms0.baidu.com/it/u=946332981,2792023099&fm=253&app=138&f=JPEG&fmt=auto&q=75?w=970&h=500" srcset="/img/loading.gif" lazyload></p>
+<p><img src="http://mms0.baidu.com/it/u=3506952241,2034148706&fm=253&app=138&f=PNG&fmt=auto&q=75?w=778&h=500" srcset="/img/loading.gif" lazyload></p>
+<h3 id="4-2IP"><a href="#4-2IP" class="headerlink" title="4.2IP"></a>4.2IP</h3><h4 id="4-2-1P数据报（分组）格式"><a href="#4-2-1P数据报（分组）格式" class="headerlink" title="4.2.1P数据报（分组）格式"></a>4.2.1P数据报（分组）格式</h4><p><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg-blog.csdnimg.cn%2F2021020617202998.png%3Fx-oss-process%3Dimage%2Fwatermark%2Ctype_ZmFuZ3poZW5naGVpdGk%2Cshadow_10%2Ctext_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NTgzNDUw%2Csize_16%2Ccolor_FFFFFF%2Ct_70%23pic_center&refer=http%3A%2F%2Fimg-blog.csdnimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1655881532&t=52088847de760e4e68ee971170e2a8c4" srcset="/img/loading.gif" lazyload></p>
+<h4 id="4-2-2IP分片"><a href="#4-2-2IP分片" class="headerlink" title="4.2.2IP分片"></a>4.2.2IP分片</h4><p>网络链路存在<strong>MTU</strong>（最大传输单元）——链路层数据帧可封装数据的上限，不同链路的MTU不同。</p>
+<p><strong>标识</strong>：标识一个IP分组，IP协议利用一个计数器，每产生IP分组计数器加1，作为IP分组的标识。</p>
+<p><strong>标志位</strong>：保留+DF+MF</p>
+<ul>
+<li>DF=1：禁止分片，DF=0：允许分片</li>
+<li>MF=1：非最后一片，MF=0：最后一片（或未分片）</li>
+</ul>
+<p><strong>片偏移</strong>：一个IP分组分片封装原IP分组数据的相对偏移量</p>
+<p><img src="http://mms0.baidu.com/it/u=3676435238,734003736&fm=253&app=138&f=PNG&fmt=auto&q=75?w=916&h=500" srcset="/img/loading.gif" lazyload></p>
+<h4 id="4-2-3IP编址"><a href="#4-2-3IP编址" class="headerlink" title="4.2.3IP编址"></a>4.2.3IP编址</h4><p>IP地址：32比特（IPv4）编号标识主机、路由器的接口</p>
+<ul>
+<li>网络号（NetID）：高位比特</li>
+<li>主机号（HostID）：低位比特</li>
+</ul>
+<p>IP子网：</p>
+<ul>
+<li>IP地址具有相同网络号的设备</li>
+<li>不跨越路由器可以彼此物理联通的接口</li>
+</ul>
+<h4 id="4-2-4有类IP地址"><a href="#4-2-4有类IP地址" class="headerlink" title="4.2.4有类IP地址"></a>4.2.4有类IP地址</h4><p><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg-blog.csdnimg.cn%2F20181104140430928.png%3Fx-oss-process%3Dimage%2Fwatermark%2Ctype_ZmFuZ3poZW5naGVpdGk%2Cshadow_10%2Ctext_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0ZpZ2h0aW5nX05vMQ%3D%3D%2Csize_16%2Ccolor_FFFFFF%2Ct_70&refer=http%3A%2F%2Fimg-blog.csdnimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1655883001&t=56f504ea5096330bf1453c1a7928be2c" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwww.w3xue.com%2Ffiles%2Fa20203%2F20200324114749397.png&refer=http%3A%2F%2Fwww.w3xue.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1655883153&t=96edbae358001e23361f8d067d171c6b" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.shangdixinxi.com%2Fup%2Finfo%2F201910%2F20191024125251520769.png&refer=http%3A%2F%2Fimg.shangdixinxi.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1655883181&t=ea27898fb4c54ff5a7bad9680b625d61" srcset="/img/loading.gif" lazyload></p>
+<h4 id="4-2-5子网划分"><a href="#4-2-5子网划分" class="headerlink" title="4.2.5子网划分"></a>4.2.5子网划分</h4><p>IP地址：</p>
+<ul>
+<li>网络号（NetID）：高位比特</li>
+<li>子网号（SubID）：原主机号高位部分比特</li>
+<li>主机号（HostID）：地位比特</li>
+</ul>
+<p>子网掩码取值：NetID、SubID位全取1，HostID位全取0</p>
+<p><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fupload-images.jianshu.io%2Fupload_images%2F16869092-ae50a5d973bbe632.PNG&refer=http%3A%2F%2Fupload-images.jianshu.io&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1655883511&t=c58dbf8388ef8abb693887a1765505d7" srcset="/img/loading.gif" lazyload></p>
+<p><img src="http://mms0.baidu.com/it/u=3449954409,2587773228&fm=253&app=138&f=JPEG&fmt=auto&q=75?w=865&h=500" srcset="/img/loading.gif" lazyload></p>
+<h3 id="4-3CIDR"><a href="#4-3CIDR" class="headerlink" title="4.3CIDR"></a>4.3CIDR</h3><p>Classless InterDomain Routing：无类域间路由</p>
+<p>消除传统的A类、B类和C类地址界限，融合子网地址与子网掩码，方便子网划分：</p>
+<ul>
+<li>无类地址格式：a.b.c.d/x, 其中x为前缀长度</li>
+</ul>
+<p>例如，子网201.2.3.64，255.255.255.192 —&gt; 201.2.3.64/26</p>
+<p><strong>无类域间路由作用</strong>：</p>
+<ul>
+<li>提高IPv4地址空间分配效率</li>
+<li>提高路由效率：将多个子网聚合为一个较大的子网，称为超网</li>
+</ul>
+<h3 id="4-4DHCP协议"><a href="#4-4DHCP协议" class="headerlink" title="4.4DHCP协议"></a>4.4DHCP协议</h3><p>Dynamic Host Configuration Protocol：动态主机配置协议</p>
+<p>一个主机如何获得IP地址？</p>
+<ul>
+<li>“硬编码”</li>
+<li>动态主机配置协DHCP<ul>
+<li>从服务器动态获取</li>
+<li>“即插即用”</li>
+<li>允许地址重用</li>
+<li>支持在用地址续租</li>
+<li>支持移动用户加入网络</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fs2.51cto.com%2Fimages%2F202110%2F099499088b786f18bc15945e4599e294cb4918.jpg%3Fx-oss-process%3Dimage%2Fwatermark%2Csize_14%2Ctext_QDUxQ1RP5Y2a5a6i%2Ccolor_FFFFFF%2Ct_100%2Cg_se%2Cx_10%2Cy_10%2Cshadow_20%2Ctype_ZmFuZ3poZW5naGVpdGk%3D&refer=http%3A%2F%2Fs2.51cto.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1655904203&t=226ac6b01fec2207c2176ca627d04684" srcset="/img/loading.gif" lazyload></p>
+<h3 id="4-5NAT"><a href="#4-5NAT" class="headerlink" title="4.5NAT"></a>4.5NAT</h3><p>网络地址转换实现：</p>
+<p><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwww.pianshen.com%2Fimages%2F8%2Fcb31229877e8009e090a8ee605826928.png&refer=http%3A%2F%2Fwww.pianshen.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1655904533&t=f6daf50b09482e2d5644b50e8c490c50" srcset="/img/loading.gif" lazyload></p>
+<p>NAT主要争议：</p>
+<ul>
+<li>路由器应该值处理第3层工功能</li>
+<li>违背端到端通信原则，应用开发者必须考录到NAT的存在</li>
+<li>地址短缺问题应该由IPv6来解决</li>
+</ul>
+<p>NAT穿透问题：</p>
+<ul>
+<li><p>解决方案一：静态配置 NAT 路由器的转换表。将特定端口的连接请求转发给服务器，如将目的地址为 138.76.29.7, 2500 的数据报总是转发给 10.0.0.1, 25000。</p>
+</li>
+<li><p>解决方案二：UPnP（Universal Plug and Play，通用即插即用） 互联网网关设备协议（IGD）自动配置。UPnP 协议实际上与第一种解决方案达到的目的是一样的，只不过手段不同（自动配置、手动配置）。UPnP 要求内网中的服务器（主机）和 NAT 路由器都是 UPnP 兼容的。</p>
+</li>
+<li><p>解决方案三：中继（如 Skype）。NAT 内部的客户与中继服务器建立连接，外部客户也与中继服务器建立连接，中继服务器桥接两个连接的分组，从而实现了 NAT 的穿透。</p>
+</li>
+</ul>
+<h3 id="5-6ICMP协议"><a href="#5-6ICMP协议" class="headerlink" title="5.6ICMP协议"></a>5.6ICMP协议</h3><p>Internet Control Message Protocol：互联网控制报文协议</p>
+<ul>
+<li>差错报告报文：<ul>
+<li>目的不可达</li>
+<li>源一直</li>
+<li>超时</li>
+<li>参数问题</li>
+<li>重定向</li>
+</ul>
+</li>
+<li>网络探寻报文：<ul>
+<li>回声请求与应答报文</li>
+<li>时间戳请求与应答报文</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fs2.ax1x.com%2F2020%2F02%2F12%2F1HKi8O.png&refer=http%3A%2F%2Fs2.ax1x.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1655904956&t=7f8efe9066c01c5b4e9ba199b4bba140" srcset="/img/loading.gif" lazyload></p>
+<p>几种不发送ICMP差错报告报文的特殊情况：</p>
+<ul>
+<li>对ICMP差错报告报文不在发送ICMP差错报告报文</li>
+<li>除第1个IP数据报分片外，对所有后续分片均不发送ICMP差错报告报文</li>
+<li>对所有多播IP数据报均不发送ICMP差错报告报文</li>
+<li>对具有特殊地址的IP数据报不发送ICMP差错报告报文</li>
+</ul>
+<p><strong>停止准则</strong>：</p>
+<ul>
+<li>UDP数据报最终到达目的主机</li>
+<li>目的主机返回“目的端口不可达”ICMP报文</li>
+<li>源主机停止</li>
+</ul>
+<h3 id="5-7IPv6"><a href="#5-7IPv6" class="headerlink" title="5.7IPv6"></a>5.7IPv6</h3><p>IPv6数据报格式：</p>
+<ul>
+<li>固定长度的40字节基本首部</li>
+<li>不允许分片</li>
+</ul>
+<img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fs1.ax1x.com%2F2020%2F06%2F28%2FN2wTqf.png&refer=http%3A%2F%2Fs1.ax1x.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1655905533&t=613e8cd5542a58eab978e967c33841b4" srcset="/img/loading.gif" lazyload style="zoom:67%;">
+
+<p>相比IPv4的改变：</p>
+<ul>
+<li>彻底移除校验和，以减少每跳处理时间</li>
+<li>允许选项，但是从基本首部移出，定义多个选项首部，通过“下一个首部”字段展示</li>
+<li>新版ICMP：增加“Packet Too Big”，增加多播组管理功能</li>
+<li>不再使用掩码</li>
+</ul>
+<img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg-blog.csdnimg.cn%2F20201225115814453.png%3Fx-oss-process%3Dimage%2Fwatermark%2Ctype_ZmFuZ3poZW5naGVpdGk%2Cshadow_10%2Ctext_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L29saXZpYTEyMzQ0MzIx%2Csize_16%2Ccolor_FFFFFF%2Ct_70&refer=http%3A%2F%2Fimg-blog.csdnimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1655905876&t=41c1f6d92b7f58511892e251cdb6669b" srcset="/img/loading.gif" lazyload style="zoom:67%;">
+
+<p>IPv6可以采用单播、多播、任意播。</p>
+<img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg-blog.csdnimg.cn%2F20200502194113582.png%3Fx-oss-process%3Dimage%2Ctype_ZmFuZ3poZW5naGVpdGk%2Cshadow_10%2Ctext_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNzMzNDk5%2Csize_16%2Ccolor_FFFFFF%2Ct_70&refer=http%3A%2F%2Fimg-blog.csdnimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1655905960&t=85276887e26f18ba906aa3b78b84d403" srcset="/img/loading.gif" lazyload style="zoom:67%;">
+
+<h3 id="5-8路由算法"><a href="#5-8路由算法" class="headerlink" title="5.8路由算法"></a>5.8路由算法</h3><p><strong>路由算法</strong>确定去往目的网络的最佳路径，寻找最小费用路径的算法</p>
+<ul>
+<li><p><strong>静态路由</strong>：手动配置，路由更新慢，优先级高</p>
+</li>
+<li><p><strong>动态路由</strong>：路由更新快，定期更新，及时响应链路费用或网络拓扑变化</p>
+</li>
+<li><p><strong>全局信息</strong>：所有路由器掌握完整的网络拓扑和链路费用信息，<strong>链路状态路由算法</strong></p>
+</li>
+<li><p><strong>分散信息</strong>：路由器只掌握物理连接的邻居以及链路费用，<strong>距离向量路由算法</strong></p>
+</li>
+</ul>
+<h4 id="5-8-1链路状态路由算法"><a href="#5-8-1链路状态路由算法" class="headerlink" title="5.8.1链路状态路由算法"></a>5.8.1链路状态路由算法</h4><p>采用迪杰斯特拉算法</p>
+<img src="http://mms1.baidu.com/it/u=917276260,888314558&fm=253&app=138&f=PNG&fmt=auto&q=75?w=1345&h=500" srcset="/img/loading.gif" lazyload style="zoom:50%;">
+
+<h4 id="5-8-2距离向量路由算法"><a href="#5-8-2距离向量路由算法" class="headerlink" title="5.8.2距离向量路由算法"></a>5.8.2距离向量路由算法</h4><p><strong>距离向量路由算法</strong>是一种迭代的、异步的和分布式的算法。</p>
+<ul>
+<li>分布式：每个节点都从其直接相连邻居接受信息，进行计算，再将计算结果分发给邻居。</li>
+<li>迭代：计算过程一直持续到邻居之间无更多信息交换为止。</li>
+<li>异步：不要求所有节点相同之间步伐一致地操作。</li>
+<li>自我终结：算法能自行停止。</li>
+</ul>
+<p><strong>对每个节点x</strong>：</p>
+<ol>
+<li>在每个节点建立自己的距离向量表并初始化。</li>
+<li>在每个节点将自己维护的距离向量表向其邻居节点转发。</li>
+<li>每个节点收到邻居节点发送的距离向量表以后基于新的信息采用方程来更新自己的距离向量表。</li>
+<li>当自己的距离向量表发生变化时，将新的距离向量表发送给自己的邻居节点，如果与以前的向量表相同则不向其邻居节点转发，直到每个节点的距离向量表达到稳定为止。</li>
+</ol>
+<p><strong>链路费用变化</strong>：</p>
+<ul>
+<li>当费用减少时：好消息传播快</li>
+<li>当费用增加时：坏消息传播慢，引申出“无穷计数”问题</li>
+</ul>
+<p><strong>无穷计数问题</strong>：</p>
+<ol>
+<li>毒性逆转：如果Z的最短路径要通过邻居Y，那么它将告诉Y自己到目的节点的距离是∞。这样，Z向Y撒了一个善意的谎言，使得只要Z经过Y选路到X，它就会一直持续讲述这个谎言，这样Y也就永远不会尝试从Z选路到X了，也就避免了环路问题。</li>
+<li>定义最大度数：定义一个最大的有效费用值，如15跳步，16跳步表示∞。</li>
+</ol>
+<h4 id="5-8-3层次路由"><a href="#5-8-3层次路由" class="headerlink" title="5.8.3层次路由"></a>5.8.3层次路由</h4><p>聚合路由器为一个区域：<strong>自治系统AS</strong>（autonomous systems）</p>
+<ul>
+<li>同一AS内的路由器运行相同的路由协议/算法</li>
+<li>不同自治系统内的路由器可以运行不同的AS内部路由协议</li>
+</ul>
+<p><strong>网关路由器</strong>：位于AS“边缘”，通过链路连接其他AS的网关路由器</p>
+<p><strong>热土豆路由</strong>：在多AS间选择时，将分组发送给最近的网关路由器。</p>
+<h3 id="5-9Internet路由"><a href="#5-9Internet路由" class="headerlink" title="5.9Internet路由"></a>5.9Internet路由</h3><p>Internet采用<strong>层次路由</strong></p>
+<p>AS内部路由协议也称内部网络协议IGP</p>
+<p>最常见的<strong>AS内部路由协议</strong>：</p>
+<ul>
+<li>路由信息协议：RIP（Routing Information Protocol）</li>
+<li>开放最短路径优先：OSPF（Open Shortest Path First）</li>
+<li>内部网关路由协议：IGRP（Interior Gateway Routing Protocol）,Cisco私有协议</li>
+</ul>
+<h4 id="5-9-1RIP协议"><a href="#5-9-1RIP协议" class="headerlink" title="5.9.1RIP协议"></a>5.9.1RIP协议</h4><p>采用<strong>距离向量路由算法</strong></p>
+<ul>
+<li>距离度量：跳步数（max = 15 hops），每条链路1个跳步</li>
+<li>每隔30秒，邻居之间交换一次DV，成为<strong>通告</strong></li>
+<li>每次通告：最多25个目的子网（IP地址形式）</li>
+</ul>
+<p>链路失效和恢复：</p>
+<ul>
+<li>如果180s没有收到通告，则邻居/链路失效</li>
+</ul>
+<p>RIP路由表是利用一个称作route-d的<strong>应用层</strong>进程进行管理，应用进程实现，通告报文周期性地通过UDP数据报发送。</p>
+<h4 id="5-9-2OSPF协议"><a href="#5-9-2OSPF协议" class="headerlink" title="5.9.2OSPF协议"></a>5.9.2OSPF协议</h4><p>采用<strong>链路状态路由算法</strong>：</p>
+<ul>
+<li>LS分组扩散（通告）</li>
+<li>每个路由器构造完整的网络拓扑</li>
+<li>利用迪杰斯特拉算法计算路由</li>
+</ul>
+<p><strong>OSPF优点（RIP不具备）</strong>：</p>
+<ul>
+<li><strong>安全</strong>：所有OSPF报文可以被认证</li>
+<li>允许使用<strong>多条</strong>相同的费用<strong>路径</strong>（RIP只能选择一条）</li>
+<li>对于每条链路，可以针对不同的<strong>TOS</strong>设置多个不同的费用度量，可实现不同类型数据分组的分流</li>
+<li>集成单播路由与多播路由</li>
+<li>OSPF支持<strong>大规模AS分层</strong></li>
+</ul>
+<p>OSPF两级分层：局部区、主干区</p>
+<p><img src="http://mms0.baidu.com/it/u=3978987848,1662011284&fm=253&app=138&f=PNG&fmt=auto&q=75?w=467&h=305" srcset="/img/loading.gif" lazyload></p>
+<h4 id="5-9-3BGP协议"><a href="#5-9-3BGP协议" class="headerlink" title="5.9.3BGP协议"></a>5.9.3BGP协议</h4><p>边界网关协议BGP（Border Gateway Protocol），事实上的标准域间路由协议，将Internrt“粘合”为一个整体的关键。</p>
+<p>BGP为每个AS提供了一种手段：</p>
+<ul>
+<li>eBGP：从邻居AS获取子网可达性信息</li>
+<li>iBGP：向所有AS内部路由器传播子网可达性信息</li>
+<li>基于可达性信息与策略，确定到达其他网络的“好”路径</li>
+</ul>
+<p><strong>BGP会话</strong>：两个BGP路由器交换BGP报文</p>
+<ul>
+<li>通告去往不同目的<strong>前缀</strong>的<strong>路径</strong></li>
+<li>报文交换基于半永久的TCP连接</li>
+</ul>
+<p><strong>BGP报文</strong>：</p>
+<ul>
+<li>OPEN：与peer建立TCP连接，并认证发送方</li>
+<li>UPDATE：通告新路径（或撤销原路径）</li>
+<li>KEEPALIVE：在无UPDATE时，保持连接；也用于对OPEN请求的确认</li>
+<li>NOTIFICATION：报告先前报文的差错；也被用于关闭连接</li>
+</ul>
+<p><strong>网关路由器收到路由通告后，利用其输入策略(import policy)决策接受/拒绝该路由</strong></p>
+<p><strong>路由器可能获知到达某目的AS的多条路由</strong>，基于以下准则选择:</p>
+<ol>
+<li>本地偏好(preference)值属性:策略决策</li>
+<li>最短AS-PATH</li>
+<li>最近NEXT-HOP路由器:热土豆路由</li>
+<li>附加准则</li>
+</ol>
+<img src="http://mms1.baidu.com/it/u=3058319925,3367710645&fm=253&app=138&f=PNG&fmt=auto&q=75?w=1057&h=316" srcset="/img/loading.gif" lazyload style="zoom:50%;">
+
+<ul>
+<li>A,B,C是<strong>提供商网络</strong>(provider network/AS)x</li>
+<li>W,Y是<strong>客户网络</strong>(customer network/AS)</li>
+<li>W,Y是<strong>桩网络</strong>(stub network/AS):只与一个其他AS相连</li>
+<li>X是<strong>双宿网络</strong>(dual-homed network/AS):连接两个其他AS</li>
+</ul>
+<p>B是否应该向C通告路径BAW？No，无任何收益</p>
+<p><strong>为什么采用不同的AS内与AS间路由协议?</strong></p>
+<ul>
+<li><p>策略(policy):</p>
+<ul>
+<li><p>inter-AS:期望能够管理控制流量如何被路由，谁路由经过其网络等.</p>
+</li>
+<li><p>intra-AS:单一管理，无需策略决策</p>
+</li>
+</ul>
+</li>
+<li><p>规模(scale):</p>
+<ul>
+<li>层次路由节省路由表大小，减少路由更新流量</li>
+<li>适应大规模互联网</li>
+</ul>
+</li>
+<li><p>性能(performance):</p>
+<ul>
+<li>intra-AS:侧重性能</li>
+<li>inter-AS:策略主导</li>
+</ul>
+</li>
+</ul>
+<h2 id="6-数据链路层"><a href="#6-数据链路层" class="headerlink" title="6.数据链路层"></a>6.数据链路层</h2><ul>
+<li>主机和路由器:<strong>结点</strong></li>
+<li>连接相邻结点的通信信道:<strong>链路</strong><ul>
+<li>有线链路</li>
+<li>无线链路</li>
+<li>局域网</li>
+</ul>
+</li>
+<li>链路层(第2层)数据分组:<strong>帧</strong>，封装网络层数据报</li>
+</ul>
+<p><strong>数据链路层</strong>负责通过一条链路从一个节点向另一个物理链路直接相连的相邻结点传送数据报。</p>
+<p><strong>链数据路层服务</strong>：</p>
+<ul>
+<li><strong>组帧</strong>：封装数据报构成数据帧，加首部和尾部；帧同步</li>
+<li><strong>链路接入</strong>：如果是共享介质，需要解决信道接入；帧首部中的“MAC”地址，用于标识帧的源和目的（不同于IP地址!）</li>
+<li><strong>相邻结点间可靠交付</strong>：在低误码率的有线链路上很少采用(如光纤，某些双绞线等)；无线链路:误码率高，需要可靠交付</li>
+<li><strong>流量控制</strong>：协调相邻的发送结点和接收</li>
+<li><strong>差错检测</strong>：信号衰减和噪声会引起差错；接收端检测到差错，通知发送端重传或者直接丢弃帧</li>
+<li><strong>差错纠正</strong>：接收端直接纠正比特差错</li>
+<li><strong>全双工和半双工通信控制</strong>：<ul>
+<li>全双工：链路两端结点同时双向传输</li>
+<li>半双工：链路两端结点交替双向传输</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-1差错编码"><a href="#6-1差错编码" class="headerlink" title="6.1差错编码"></a>6.1差错编码</h3><p>差错编码基本原理：D -&gt; DR，其中R为差错检测与纠正比特（冗余比特）（监督位）</p>
+<p>差错编码不能保证100%可靠！</p>
+<img src="http://mms0.baidu.com/it/u=3871246119,357947636&fm=253&app=138&f=JPEG&fmt=auto&q=75?w=847&h=500" srcset="/img/loading.gif" lazyload style="zoom:50%;">
+
+<p>差错编码可分为<strong>检错码</strong>与<strong>纠错码</strong></p>
+<ul>
+<li>对于<strong>检错码</strong>，如果编码集的汉明距离d = r+1，则该差错编码可以检测 r 位的差错</li>
+<li>对于<strong>纠错码</strong>，如果编码集的汉明距离d = 2r+1，则该差错编码可以纠正 r 位的差错</li>
+</ul>
+<p>校验有 奇偶校验码、Internet校验和、循环冗余校验码（CRC）</p>
+<h3 id="6-2多路访问控制协议MAC"><a href="#6-2多路访问控制协议MAC" class="headerlink" title="6.2多路访问控制协议MAC"></a>6.2多路访问控制协议MAC</h3><p>两类链路：点对点链路，广播链路（共享介质）</p>
+<p><strong>理想MAC协议</strong> 给定:速率为R bps的广播信道期望:</p>
+<ol>
+<li>当只有一个结点希望传输数据时，它可以以速率R发送.</li>
+<li>当有M个结点期望发送数据时，每个节点平均发送数据的平均速率是R/M</li>
+<li>完全分散控制：无需特定结点协调，无需时钟、时隙同步</li>
+<li>简单</li>
+</ol>
+<p><strong>MAC协议三大类</strong>：</p>
+<ul>
+<li><strong>信道划分</strong>(channel partitioning)MAC协议<ul>
+<li>多路复用技术</li>
+<li>TDMA、FDMA、CDMA、WDMA等</li>
+</ul>
+</li>
+<li><strong>随机访问</strong>(random access)MAC协议<ul>
+<li>信道不划分，允许冲突</li>
+<li>采用冲突“恢复”机制</li>
+</ul>
+</li>
+<li><strong>轮转</strong>(“taking turns”)MAC协议<ul>
+<li>结点轮流使用信道</li>
+</ul>
+</li>
+</ul>
+<h4 id="6-2-1信道划分MAC协议"><a href="#6-2-1信道划分MAC协议" class="headerlink" title="6.2.1信道划分MAC协议"></a>6.2.1信道划分MAC协议</h4><h4 id="6-2-2随机访问MAC协议"><a href="#6-2-2随机访问MAC协议" class="headerlink" title="6.2.2随机访问MAC协议"></a>6.2.2随机访问MAC协议</h4><p>典型的随机访问MAC协议：</p>
+<ul>
+<li>时隙(sloted)ALOHA</li>
+<li>ALOHA</li>
+<li>CSMA、CSMA/CD、CSMA/CA</li>
+</ul>
+<p><strong>时隙ALOHA协议</strong>：</p>
+<p>优点：</p>
+<ul>
+<li>单个结点活动时，可以连续以信道全部速率传输数据</li>
+<li>高度分散化：只需同步时隙</li>
+<li>简单</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>冲突，浪费时隙</li>
+<li>空闲时隙</li>
+<li>结点也许能以远小于分组传输时间检测到冲突</li>
+<li>时钟同步</li>
+</ul>
+<p>最好情况：信道被成功利用的时间占37%</p>
+<p><strong>ALOHA协议</strong>：</p>
+<ul>
+<li>更加简单，无需同步</li>
+<li>当有新的帧生成时立即发送</li>
+<li>冲突可能性增大，在to时刻发送帧，会与在[to-1, to+1]期间其他结点发送的帧冲突</li>
+</ul>
+<p>最好情况：信道被成功利用的时间占18%</p>
+<p><strong>CSMA协议</strong>：<strong>载波监听多路访问协议</strong></p>
+<p>发送帧之前，监听信道(载波):</p>
+<ul>
+<li><p>信道空闲:发送完整帧</p>
+</li>
+<li><p>信道忙:推迟发送</p>
+<ul>
+<li><p>1-坚持CSMA</p>
+</li>
+<li><p>非坚持CSMA</p>
+</li>
+<li><p>P-坚持CSMA</p>
+</li>
+</ul>
+</li>
+<li><p>冲突可能仍然发生：信号传播延迟</p>
+</li>
+</ul>
+<p><strong>CSMA/CD协议</strong>：</p>
+<p>短时间内可以检测到冲突，中突后传输中止，减少信道浪费</p>
+<p><strong>冲突检测</strong>：</p>
+<ul>
+<li>有线局域网易于实现:测量信号强度，比较发射信号与接收信号</li>
+<li>无线局域网很难实现：接收信号强度淹没在本地发射信号强度下</li>
+</ul>
+<p><strong>“边发边听，不发不听”</strong></p>
+<p>网络带宽:R 单位 bps</p>
+<p>数据帧最小长度:L(min) 单位 bits</p>
+<p>信号传播速度:V 单位 m/s</p>
+<p>L(min) / R = 2*d(max) / V</p>
+<p>L(min) / R = RTT(max)</p>
+<p>t(prop)趋近于0或者t(trans)趋近于oo 时，效率趋近于1</p>
+<p>远优于ALOHA，并且简单、分散!</p>
+<h4 id="6-2-3轮转MAC协议"><a href="#6-2-3轮转MAC协议" class="headerlink" title="6.2.3轮转MAC协议"></a>6.2.3轮转MAC协议</h4><p><strong>轮询</strong>(polling)：主结点轮流“激请”从属结点发送数据</p>
+<p>问题:</p>
+<ul>
+<li>轮询开销</li>
+<li>等待延迟</li>
+<li>单点故障</li>
+</ul>
+<p><strong>令牌传递</strong>(token passing)：控制令牌依次从一个结点传递到下一个结点，令牌为特殊帧</p>
+<p>问题：</p>
+<ul>
+<li>令牌开销</li>
+<li>等待延迟</li>
+<li>单点故障</li>
+</ul>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">#计算机网络</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>计算机网络（二）</div>
+      <div>http://example.com/2022/05/25/计算机网络2/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Echo</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年5月25日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/06/22/%E5%85%B3%E4%BA%8E%E5%BC%80%E5%8F%91%E3%80%81%E6%B5%8B%E8%AF%95%E3%80%81%E9%A2%84%E7%94%9F%E4%BA%A7%E3%80%81%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83/" title="关于开发、测试、预生产、生产环境">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">关于开发、测试、预生产、生产环境</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C1/" title="计算机网络（一）">
+                        <span class="hidden-mobile">计算机网络（一）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
