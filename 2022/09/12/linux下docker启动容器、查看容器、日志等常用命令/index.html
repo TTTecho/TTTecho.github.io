@@ -16,22 +16,22 @@
   <meta name="author" content="Echo">
   <meta name="keywords" content="">
   
-    <meta name="description" content="回溯+染色">
+    <meta name="description" content="1. docker服务相关命令 启动docker服务：systemctl start docker 停止docker服务：systemctl stop docker 重启docker服务：systemctl restart docker 查看docker服务状态：systemctl status docker 设置开机启动docker服务：systemctl enable docker 查看doc">
 <meta property="og:type" content="article">
-<meta property="og:title" content="蚂蚁搬家路径问题">
-<meta property="og:url" content="http://example.com/2022/09/05/%E8%9A%82%E8%9A%81%E6%90%AC%E5%AE%B6%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:title" content="linux下docker启动容器、查看容器、日志等常用命令">
+<meta property="og:url" content="http://example.com/2022/09/12/linux%E4%B8%8Bdocker%E5%90%AF%E5%8A%A8%E5%AE%B9%E5%99%A8%E3%80%81%E6%9F%A5%E7%9C%8B%E5%AE%B9%E5%99%A8%E3%80%81%E6%97%A5%E5%BF%97%E7%AD%89%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/index.html">
 <meta property="og:site_name" content="TTTecho">
-<meta property="og:description" content="回溯+染色">
+<meta property="og:description" content="1. docker服务相关命令 启动docker服务：systemctl start docker 停止docker服务：systemctl stop docker 重启docker服务：systemctl restart docker 查看docker服务状态：systemctl status docker 设置开机启动docker服务：systemctl enable docker 查看doc">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-09-05T14:05:08.133Z">
-<meta property="article:modified_time" content="2022-09-05T14:05:32.037Z">
+<meta property="article:published_time" content="2022-09-12T14:39:32.051Z">
+<meta property="article:modified_time" content="2022-09-12T14:38:44.473Z">
 <meta property="article:author" content="Echo">
-<meta property="article:tag" content="算法">
+<meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>蚂蚁搬家路径问题 - TTTecho</title>
+  <title>linux下docker启动容器、查看容器、日志等常用命令 - TTTecho</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -194,7 +194,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="蚂蚁搬家路径问题"></span>
+            <span id="subtitle" data-typed-text="linux下docker启动容器、查看容器、日志等常用命令"></span>
           
         </div>
 
@@ -205,8 +205,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-09-05 22:05" pubdate>
-          2022年9月5日 晚上
+        <time datetime="2022-09-12 22:39" pubdate>
+          2022年9月12日 晚上
         </time>
       </span>
     
@@ -217,7 +217,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.3k 字
+          1.4k 字
         
       </span>
     
@@ -266,24 +266,62 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">蚂蚁搬家路径问题</h1>
+            <h1 style="display: none">linux下docker启动容器、查看容器、日志等常用命令</h1>
             
             <div class="markdown-body">
               
-              <h3 id="蚂蚁搬家"><a href="#蚂蚁搬家" class="headerlink" title="蚂蚁搬家"></a>蚂蚁搬家</h3><p>蚂蚁搬家的路径长度为L；</p>
-<p>一共有M只蚂蚁；</p>
-<p>每一只蚂蚁只负责一定范围的路径；</p>
-<p>输出搬家需要的最少蚂蚁数；若没有，则输出fail</p>
-<h4 id="样例输入（1）"><a href="#样例输入（1）" class="headerlink" title="样例输入（1）"></a>样例输入（1）</h4><figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">9 </span><span class="hljs-number">5</span><br><span class="hljs-symbol">1 </span><span class="hljs-number">5</span><br><span class="hljs-symbol">2 </span><span class="hljs-number">6</span><br><span class="hljs-symbol">3 </span><span class="hljs-number">4</span><br><span class="hljs-symbol">5 </span><span class="hljs-number">8</span><br><span class="hljs-symbol">6 </span><span class="hljs-number">9</span><br></code></pre></td></tr></table></figure>
+              <h3 id="1-docker服务相关命令"><a href="#1-docker服务相关命令" class="headerlink" title="1. docker服务相关命令"></a>1. docker服务相关命令</h3><ul>
+<li>启动docker服务：<code>systemctl start docker</code></li>
+<li>停止docker服务：<code>systemctl stop docker</code></li>
+<li>重启docker服务：<code>systemctl restart docker</code></li>
+<li>查看docker服务状态：<code>systemctl status docker</code></li>
+<li>设置开机启动docker服务：<code>systemctl enable docker</code></li>
+<li>查看docker版本号信息：<code>docker version</code> 和 <code>docker info</code></li>
+<li>docker帮助命令：<code>docker --help</code></li>
+</ul>
+<h3 id="2-docker镜像相关命令"><a href="#2-docker镜像相关命令" class="headerlink" title="2. docker镜像相关命令"></a>2. docker镜像相关命令</h3><ul>
+<li>查看镜像：<code>docker images</code></li>
+<li>查看所有镜像：<code>docker images -a</code></li>
+<li>从网络中查询镜像：<code>docker search 镜像名称</code></li>
+<li>拉取镜像：<code>docker pull 镜像名称</code> （可以指定版本 镜像名称：版本号）</li>
+<li>运行镜像：<code>docker run 镜像名称</code>（可以指定版本 镜像名称：版本号）</li>
+<li>删除镜像：<code>docker rm 镜像名称/ID</code></li>
+<li>删除所有本地镜像：<code>docker rmi docker images -q</code></li>
+</ul>
+<h3 id="3-docker容器相关命令"><a href="#3-docker容器相关命令" class="headerlink" title="3. docker容器相关命令"></a>3. docker容器相关命令</h3><ul>
+<li>查询正在运行的容器：<code>docker ps</code></li>
+<li>查询所有容器：<code>docker ps -a</code></li>
+<li>创建容器：<code>docker run 参数 镜像名称/ID</code></li>
+<li>参数：<ul>
+<li><code>-id</code>：守护式容器</li>
+<li><code>--name</code>：容器名称</li>
+<li><code>-p</code>：端口映射</li>
+<li><code>-v</code>：目录挂载</li>
+</ul>
+</li>
+<li>停止容器：<code>docker stop 容器名称/ID</code></li>
+<li>启动容器：<code>docker start 容器名称/ID</code></li>
+<li>重启容器：<code>docker restart 容器名称/ID</code></li>
+<li>删除容器：<code>docker rm 容器名称/ID</code>（删除容器必须停止运行）</li>
+<li>查看容器信息：<code>docker inspect 容器名称/ID</code></li>
+</ul>
+<h3 id="4-docker日志相关命令"><a href="#4-docker日志相关命令" class="headerlink" title="4. docker日志相关命令"></a>4. docker日志相关命令</h3><p><strong>命令格式：</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ docker logs [OPTIONS] CONTAINER<br>  Options:<br>        --details        显示更多的信息<br>    -f, --follow         跟踪实时日志<br>        --since string   显示自某个timestamp之后的日志，或相对时间，如42m（即42分钟）<br>        --tail string    从日志末尾显示多少行日志， 默认是all<br>    -t, --timestamps     显示时间戳<br>        --until string   显示自某个timestamp之前的日志，或相对时间，如42m（即42分钟）<br></code></pre></td></tr></table></figure>
 
-<h4 id="样例输出（1）"><a href="#样例输出（1）" class="headerlink" title="样例输出（1）"></a>样例输出（1）</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">2<br></code></pre></td></tr></table></figure>
-
-<h4 id="样例输入（2）"><a href="#样例输入（2）" class="headerlink" title="样例输入（2）"></a>样例输入（2）</h4><figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">9 </span><span class="hljs-number">3</span><br><span class="hljs-symbol">1 </span><span class="hljs-number">6</span><br><span class="hljs-symbol">2 </span><span class="hljs-number">3</span><br><span class="hljs-symbol">5 </span><span class="hljs-number">7</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="样例输出（2）"><a href="#样例输出（2）" class="headerlink" title="样例输出（2）"></a>样例输出（2）</h4><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs coq"><span class="hljs-built_in">fail</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="代码实现（待优化）"><a href="#代码实现（待优化）" class="headerlink" title="代码实现（待优化）"></a>代码实现（待优化）</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> blue;<br><br><span class="hljs-keyword">import</span> java.util.Scanner;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">demo1</span> </span>&#123;<br><br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> res = Integer.MAX_VALUE;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        <span class="hljs-comment">//输入参数</span><br>        Scanner sc = <span class="hljs-keyword">new</span> Scanner(System.in);<br>        <span class="hljs-keyword">int</span> L = sc.nextInt();<br>        <span class="hljs-keyword">int</span> M = sc.nextInt();<br>        <span class="hljs-keyword">int</span>[][] num = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[M][<span class="hljs-number">2</span>];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; M; i++) &#123;<br>            num[i][<span class="hljs-number">0</span>] = sc.nextInt();<br>            num[i][<span class="hljs-number">1</span>] = sc.nextInt();<br>        &#125;<br>        <span class="hljs-comment">//建立未染色路径</span><br>        <span class="hljs-keyword">int</span>[] row = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[L];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; L; i++) &#123;<br>            row[i] = <span class="hljs-number">0</span>;<br>        &#125;<br>        <span class="hljs-comment">//M组合</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= M; i++) &#123;<br>            handler(M, i, <span class="hljs-number">0</span>, row, num);<br>        &#125;<br>        <span class="hljs-comment">//结果</span><br>        <span class="hljs-keyword">if</span> (res == Integer.MAX_VALUE)&#123;<br>            System.out.println(<span class="hljs-string">&quot;fail&quot;</span>);<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            System.out.println(res);<br>        &#125;<br>    &#125;<br>    <span class="hljs-comment">//组合</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">handler</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n, <span class="hljs-keyword">int</span> k, <span class="hljs-keyword">int</span> start, <span class="hljs-keyword">int</span>[] row, <span class="hljs-keyword">int</span>[][] num)</span></span>&#123;<br>        <span class="hljs-keyword">if</span> (sum == k) &#123;<br>            sut(row);<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = start; i &lt; n; i++) &#123;<br>            <span class="hljs-comment">//染色</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = num[i][<span class="hljs-number">0</span>]-<span class="hljs-number">1</span>; j &lt;num[i][<span class="hljs-number">1</span>]; j++) &#123;<br>                row[j]++;<br>            &#125;<br>            sum++;<br>            handler(n, k, i+<span class="hljs-number">1</span>, row, num);<br>            <span class="hljs-comment">//还原</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = num[i][<span class="hljs-number">0</span>]-<span class="hljs-number">1</span>; j &lt;num[i][<span class="hljs-number">1</span>]; j++) &#123;<br>                row[j]--;<br>            &#125;<br>            sum--;<br>        &#125;<br>    &#125;<br>    <span class="hljs-comment">//染色判断</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">sut</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] row)</span></span>&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; row.length; i++) &#123;<br>            <span class="hljs-keyword">if</span> (row[i] == <span class="hljs-number">0</span>) &#123;<br>                <span class="hljs-keyword">return</span>;<br>            &#125;<br>        &#125;<br>        res = res &lt; sum ? res :sum;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
-
+<ul>
+<li>显示某个容器的所有 log：<code>docker logs [OPTIONS] &lt;CONTAINER&gt;</code></li>
+<li>显示 docker-compose 启动的所有容器的log：<code>docker-compose logs</code></li>
+<li>显示实时 log：<code>docker logs -f &lt;CONTAINER&gt;</code></li>
+<li>使用 tail 查看 log 尾部：<code>docker logs --tail 数目 &lt;CONTAINER&gt;</code></li>
+<li>使用 grep 过滤 log：<code>docker logs | grep error</code>（查看所有包含“error”的log）</li>
+<li>根据时间查看 log：<code>docker logs --since 时间 &lt;CONTAINER&gt;</code></li>
+<li>把日志写入文件：<code>docker logs -t &lt;CONTAINER&gt; | grep error &gt;&gt; logs_error.txt</code></li>
+</ul>
+<h3 id="5-其他命令"><a href="#5-其他命令" class="headerlink" title="5. 其他命令"></a>5. 其他命令</h3><ul>
+<li>将宿主机文件拷贝到容器中：<code>docker cp 要拷贝文件路径 容器名称：容器内文件目标路径</code></li>
+<li>将容器内文件拷贝到宿主机：<code>docker cp 容器名称：要拷贝文件路径 宿主机路径</code></li>
+<li>进入容器命令：<code>docker exec -it 容器名称/ID /bin/bash</code></li>
+</ul>
 
               
             </div>
@@ -295,7 +333,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
+        <a href="/tags/linux/">#linux</a>
       
     </div>
   
@@ -307,8 +345,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>蚂蚁搬家路径问题</div>
-      <div>http://example.com/2022/09/05/蚂蚁搬家路径问题/</div>
+      <div>linux下docker启动容器、查看容器、日志等常用命令</div>
+      <div>http://example.com/2022/09/12/linux下docker启动容器、查看容器、日志等常用命令/</div>
     </div>
     <div class="license-meta">
       
@@ -320,7 +358,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年9月5日</div>
+          <div>2022年9月12日</div>
         </div>
       
       
@@ -350,18 +388,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/09/12/Bean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" title="Bean的生命周期">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Bean的生命周期</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/09/05/Redis%E5%9C%A8SpringBoot%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E9%85%8D%E7%BD%AE/" title="Redis在SpringBoot项目中的配置，及Redisson">
-                        <span class="hidden-mobile">Redis在SpringBoot项目中的配置，及Redisson</span>
+                      <a href="/2022/09/12/Bean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" title="Bean的生命周期">
+                        <span class="hidden-mobile">Bean的生命周期</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -16,22 +16,25 @@
   <meta name="author" content="Echo">
   <meta name="keywords" content="">
   
-    <meta name="description" content="回溯+染色">
+    <meta name="description" content="Spring bean 的生命周期很容易理解。 实例化 bean 时，可能需要执行一些初始化以使其进入可用状态。 同样，当不再需要 bean 并将其从容器中取出时，可能需要进行一些清理。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="蚂蚁搬家路径问题">
-<meta property="og:url" content="http://example.com/2022/09/05/%E8%9A%82%E8%9A%81%E6%90%AC%E5%AE%B6%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:title" content="Bean的生命周期">
+<meta property="og:url" content="http://example.com/2022/09/12/Bean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/index.html">
 <meta property="og:site_name" content="TTTecho">
-<meta property="og:description" content="回溯+染色">
+<meta property="og:description" content="Spring bean 的生命周期很容易理解。 实例化 bean 时，可能需要执行一些初始化以使其进入可用状态。 同样，当不再需要 bean 并将其从容器中取出时，可能需要进行一些清理。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-09-05T14:05:08.133Z">
-<meta property="article:modified_time" content="2022-09-05T14:05:32.037Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210707002134280.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210620183346257.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzMTkyOA==,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2022-09-12T14:39:29.530Z">
+<meta property="article:modified_time" content="2022-09-12T14:38:44.547Z">
 <meta property="article:author" content="Echo">
-<meta property="article:tag" content="算法">
+<meta property="article:tag" content="Spring">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20210707002134280.png">
   
   
   
-  <title>蚂蚁搬家路径问题 - TTTecho</title>
+  <title>Bean的生命周期 - TTTecho</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -194,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="蚂蚁搬家路径问题"></span>
+            <span id="subtitle" data-typed-text="Bean的生命周期"></span>
           
         </div>
 
@@ -205,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-09-05 22:05" pubdate>
-          2022年9月5日 晚上
+        <time datetime="2022-09-12 22:39" pubdate>
+          2022年9月12日 晚上
         </time>
       </span>
     
@@ -217,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.3k 字
+          3.1k 字
         
       </span>
     
@@ -228,7 +231,7 @@
         
         
         
-          12 分钟
+          26 分钟
         
       </span>
     
@@ -266,24 +269,46 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">蚂蚁搬家路径问题</h1>
+            <h1 style="display: none">Bean的生命周期</h1>
             
             <div class="markdown-body">
               
-              <h3 id="蚂蚁搬家"><a href="#蚂蚁搬家" class="headerlink" title="蚂蚁搬家"></a>蚂蚁搬家</h3><p>蚂蚁搬家的路径长度为L；</p>
-<p>一共有M只蚂蚁；</p>
-<p>每一只蚂蚁只负责一定范围的路径；</p>
-<p>输出搬家需要的最少蚂蚁数；若没有，则输出fail</p>
-<h4 id="样例输入（1）"><a href="#样例输入（1）" class="headerlink" title="样例输入（1）"></a>样例输入（1）</h4><figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">9 </span><span class="hljs-number">5</span><br><span class="hljs-symbol">1 </span><span class="hljs-number">5</span><br><span class="hljs-symbol">2 </span><span class="hljs-number">6</span><br><span class="hljs-symbol">3 </span><span class="hljs-number">4</span><br><span class="hljs-symbol">5 </span><span class="hljs-number">8</span><br><span class="hljs-symbol">6 </span><span class="hljs-number">9</span><br></code></pre></td></tr></table></figure>
+              <h2 id="一、Spring中bean的作用域"><a href="#一、Spring中bean的作用域" class="headerlink" title="一、Spring中bean的作用域"></a>一、Spring中bean的作用域</h2><ol>
+<li><strong>singleton：</strong>唯一 bean 实例，Spring 中的 bean 默认都是单例的。</li>
+<li><strong>prototype：</strong>每次请求都会创建一个新的 bean 实例。</li>
+<li><strong>request：</strong>每一次 HTTP 请求都会产生一个新的 bean，该 bean 仅在当前 HTTP request 内有效。</li>
+<li><strong>session：</strong>每一次 HTTP 请求都会产生一个新的 bean，该 bean 仅在当前 HTTP session 内有效。</li>
+<li><strong>global-session：</strong>全局 session 作用域，仅仅在基于 Portlet 的 web 应用中才有意义，Spring5 已经没有了。Portlet 是能够生成语义代码（例如：HTML）片段的小型 Java Web 插件。它们基于 portlet 容器，可以像 servlet 一样处理 HTTP 请求。但是，与 servlet 不同，每个 portlet 都有不同的会话。</li>
+</ol>
+<h2 id="二、Spring-Bean-的生命周期"><a href="#二、Spring-Bean-的生命周期" class="headerlink" title="二、Spring Bean 的生命周期"></a>二、Spring Bean 的生命周期</h2><ul>
+<li>实例化 Instantiation</li>
+<li>属性赋值 Populate</li>
+<li>初始化 Initialization</li>
+<li>销毁 Destruction</li>
+</ul>
+<img src="https://img-blog.csdnimg.cn/20210707002134280.png" srcset="/img/loading.gif" lazyload style="zoom:50%;">
 
-<h4 id="样例输出（1）"><a href="#样例输出（1）" class="headerlink" title="样例输出（1）"></a>样例输出（1）</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">2<br></code></pre></td></tr></table></figure>
+<p>下面是一个细化的Bean 生命周期图：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210620183346257.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzMTkyOA==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload></p>
+<p><strong>说明：</strong></p>
+<p>Bean的完整生命周期经历了各种方法的调用，这些方法可以划分为以下几类：</p>
+<ol>
+<li>Bean自身的方法：这个包括了Bean本身调用的方法和通过配置文件中 <code>&lt;bean&gt;</code>的 <code>init-method</code>和 <code>destroy-method</code>指定的方法。</li>
+<li>Bean级生命周期接口方法：这个包括 <code>BeanNameAware</code>， <code>InitializingBean</code>和 <code>DiposableBean</code>这些接口的方法。</li>
+<li>容器级生命周期接口方法：这个包括了 <code>BeanFactoryProcessor</code>接口和 <code>InstantiationAwareBeanPostProcessor</code>接口。</li>
+<li>工厂后处理器接口方法：这个包括了 <code>AspectJWeavingEnabler</code>, <code>ConfigurationClassPostProcessor</code>, <code>CustomAutowireConfigurer</code>等等非常有用的工厂后处理器接口的方法。工厂后处理器也是容器级的。在应用上下文装配配置文件之后立即调用。</li>
+</ol>
+<h2 id="三、Bean的生命周期流程说明"><a href="#三、Bean的生命周期流程说明" class="headerlink" title="三、Bean的生命周期流程说明"></a>三、Bean的生命周期流程说明</h2><h3 id="1-Bean的实例化"><a href="#1-Bean的实例化" class="headerlink" title="1. Bean的实例化"></a>1. Bean的实例化</h3><p>​    Spring对Bean进行实例化（相当于 new XXX()）,对于 <code>BeanFactory</code>一般是延迟实例化，就是说调用 <code>getBean</code>方法才会实例化，但是对于 <code>ApplicationContext</code>，当容器初始化完成之后，就完成了所有Bean的实例化工作。实例化的对象被包装在 <code>BeanWrapper</code>对象中， <code>BeanWrapper</code>提供了设置对象属性的接口，从而避免了使用反射机制设置属性。</p>
+<h3 id="2-InstantiationAwareBeanPostProcessor"><a href="#2-InstantiationAwareBeanPostProcessor" class="headerlink" title="2. InstantiationAwareBeanPostProcessor"></a>2. InstantiationAwareBeanPostProcessor</h3><p>​    <code>InstantiationAwareBeanPostProcessor</code>这个接口主要是帮助你在Bean实例化之前做一些操作。它继承自 <code>BeanPostProcessor</code>接口，其中 <code>postProcessBeforeInstantiation()</code>方法是在目标对象实例化之前调用的方法，可以返回目标实例的一个代理用来代替目标实例。<code>postProcessPropertyValues</code>方法是在属性值被设置到目标实例之前调用，可以修改属性的设值。</p>
+<h3 id="3-设置属性（依赖注入）"><a href="#3-设置属性（依赖注入）" class="headerlink" title="3. 设置属性（依赖注入）"></a>3. 设置属性（依赖注入）</h3><p>​    实例化后的对象被封装到 <code>BeanWrapper</code>对象中，并且此时对象是一个原生状态，并没有执行依赖注入。紧接着，Spring根据 <code>BeanDefinition</code>中的信息进行依赖注入。并且通过 <code>BeanWrapper</code>提供的设置属性的接口完成依赖注入。</p>
+<h3 id="4-注入Aware接口"><a href="#4-注入Aware接口" class="headerlink" title="4. 注入Aware接口"></a>4. 注入Aware接口</h3><p>​    Spring 会检测该对象是否实现了xxxAware接口，并将相关的xxxAware实例注入给Bean。各种各样的Aware接口，其作用就是在对象实例化完成后将Aware接口定义中规定的依赖注入到当前实例中。比较常见的 <code>ApplicationContextAware</code>接口，实现了这个接口的类都可以获取到一个 <code>ApplicationContext</code>对象，当容器中每个对象的实例化过程走到 <code>BeanPostProcessor</code>前置处理这一步时，容器会检测到之前注册到容器的 <code>ApplicationContextAwareProcessor</code>，然后就会调用其 <code>postProcessorBeforeInitialization()</code>方法，检查并设置Aware相关的依赖。示例如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SpringUtils</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">ApplicationContextAware</span> </span>&#123;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> ApplicationContext applicationContext;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setApplicationContext</span><span class="hljs-params">(ApplicationContext applicationContext)</span> <span class="hljs-keyword">throws</span> BeansException </span>&#123;<br>        SpringUtils.applicationContext = applicationContext;<br>        System.out.println(<span class="hljs-string">&quot;========ApplicationContext配置成功========&quot;</span>);<br>    &#125;<br>    &#125;<br></code></pre></td></tr></table></figure>
 
-<h4 id="样例输入（2）"><a href="#样例输入（2）" class="headerlink" title="样例输入（2）"></a>样例输入（2）</h4><figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">9 </span><span class="hljs-number">3</span><br><span class="hljs-symbol">1 </span><span class="hljs-number">6</span><br><span class="hljs-symbol">2 </span><span class="hljs-number">3</span><br><span class="hljs-symbol">5 </span><span class="hljs-number">7</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="样例输出（2）"><a href="#样例输出（2）" class="headerlink" title="样例输出（2）"></a>样例输出（2）</h4><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs coq"><span class="hljs-built_in">fail</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="代码实现（待优化）"><a href="#代码实现（待优化）" class="headerlink" title="代码实现（待优化）"></a>代码实现（待优化）</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> blue;<br><br><span class="hljs-keyword">import</span> java.util.Scanner;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">demo1</span> </span>&#123;<br><br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> res = Integer.MAX_VALUE;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        <span class="hljs-comment">//输入参数</span><br>        Scanner sc = <span class="hljs-keyword">new</span> Scanner(System.in);<br>        <span class="hljs-keyword">int</span> L = sc.nextInt();<br>        <span class="hljs-keyword">int</span> M = sc.nextInt();<br>        <span class="hljs-keyword">int</span>[][] num = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[M][<span class="hljs-number">2</span>];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; M; i++) &#123;<br>            num[i][<span class="hljs-number">0</span>] = sc.nextInt();<br>            num[i][<span class="hljs-number">1</span>] = sc.nextInt();<br>        &#125;<br>        <span class="hljs-comment">//建立未染色路径</span><br>        <span class="hljs-keyword">int</span>[] row = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[L];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; L; i++) &#123;<br>            row[i] = <span class="hljs-number">0</span>;<br>        &#125;<br>        <span class="hljs-comment">//M组合</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= M; i++) &#123;<br>            handler(M, i, <span class="hljs-number">0</span>, row, num);<br>        &#125;<br>        <span class="hljs-comment">//结果</span><br>        <span class="hljs-keyword">if</span> (res == Integer.MAX_VALUE)&#123;<br>            System.out.println(<span class="hljs-string">&quot;fail&quot;</span>);<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            System.out.println(res);<br>        &#125;<br>    &#125;<br>    <span class="hljs-comment">//组合</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">handler</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n, <span class="hljs-keyword">int</span> k, <span class="hljs-keyword">int</span> start, <span class="hljs-keyword">int</span>[] row, <span class="hljs-keyword">int</span>[][] num)</span></span>&#123;<br>        <span class="hljs-keyword">if</span> (sum == k) &#123;<br>            sut(row);<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = start; i &lt; n; i++) &#123;<br>            <span class="hljs-comment">//染色</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = num[i][<span class="hljs-number">0</span>]-<span class="hljs-number">1</span>; j &lt;num[i][<span class="hljs-number">1</span>]; j++) &#123;<br>                row[j]++;<br>            &#125;<br>            sum++;<br>            handler(n, k, i+<span class="hljs-number">1</span>, row, num);<br>            <span class="hljs-comment">//还原</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = num[i][<span class="hljs-number">0</span>]-<span class="hljs-number">1</span>; j &lt;num[i][<span class="hljs-number">1</span>]; j++) &#123;<br>                row[j]--;<br>            &#125;<br>            sum--;<br>        &#125;<br>    &#125;<br>    <span class="hljs-comment">//染色判断</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">sut</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] row)</span></span>&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; row.length; i++) &#123;<br>            <span class="hljs-keyword">if</span> (row[i] == <span class="hljs-number">0</span>) &#123;<br>                <span class="hljs-keyword">return</span>;<br>            &#125;<br>        &#125;<br>        res = res &lt; sum ? res :sum;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
-
+<h3 id="5-BeanPostProcessor的postProcessBeforeInitialzation方法"><a href="#5-BeanPostProcessor的postProcessBeforeInitialzation方法" class="headerlink" title="5. BeanPostProcessor的postProcessBeforeInitialzation方法"></a>5. BeanPostProcessor的postProcessBeforeInitialzation方法</h3><p>​    经过上述步骤后，Bean对象已经被正确构造了，如果你想要对象被使用之前在进行自定义的处理，可以通过 <code>BeanPostProcessor</code>接口实现。该接口提供了两个方法 其中 <code>postProcessBeforeInitialzation(Objectbean,StringbeanName)</code> 方法；当前正在初始化的bean对象会被传递进来，我们就可以对这个Bean做任何处理，这个方法会先于 <code>InitializingBean</code>执行，因此称为前置处理。</p>
+<h3 id="6-InitializingBean与init-method"><a href="#6-InitializingBean与init-method" class="headerlink" title="6. InitializingBean与init-method"></a>6. InitializingBean与init-method</h3><p>​    如果Bean实现了 <code>InitializingBean</code>接口，Spring将调用它们的 <code>afterPropertiesSet</code>方法，作用与在配置文件中对Bean使用 <code>init-method</code>声明初始化的作用一样，都是在Bean的全部属性设置成功后执行的初始化方法。<code>afterPropertiesSet</code> 方法与前置处理不同的是，由于其没有把Bean对象传进来，因此在这一步没有办法处理对象本身，只能增加一些额外的逻辑。</p>
+<h3 id="7-BeanPostProcess的postProcessAfterInitialzation方法"><a href="#7-BeanPostProcess的postProcessAfterInitialzation方法" class="headerlink" title="7.BeanPostProcess的postProcessAfterInitialzation方法"></a>7.BeanPostProcess的postProcessAfterInitialzation方法</h3><p>​    <code>BeanPostProcess</code>的 <code>postProcessAfterInitialzation(Objectbean,StringbeanName)</code> 方法；当前正在初始化的bean对象会被传递进来，我们就可以对这个bean做任何处理。这个函数会在 <code>InitializingBean</code>完成后执行，因此称为后置处理。</p>
+<h3 id="8-Bean初始化结束"><a href="#8-Bean初始化结束" class="headerlink" title="8. Bean初始化结束"></a>8. Bean初始化结束</h3><p>​    经过以上的工作以后，Bean的初始化就结束了，Bean将一直驻留在应用上下文中给应用使用，知道应用上下文被销毁。</p>
+<h3 id="9-DispostbleBean接口"><a href="#9-DispostbleBean接口" class="headerlink" title="9. DispostbleBean接口"></a>9. DispostbleBean接口</h3><p>​    如果Bean实现了 <code>DispostbleBean</code>接口，Spring将调用它的 <code>destroy</code>方法，作用与在配置文件中对Bean使用 <code>destroy-method</code>属性的作用是一样的，都是在Bean实例销毁前执行的方法。</p>
 
               
             </div>
@@ -295,7 +320,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
+        <a href="/tags/Spring/">#Spring</a>
       
     </div>
   
@@ -307,8 +332,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>蚂蚁搬家路径问题</div>
-      <div>http://example.com/2022/09/05/蚂蚁搬家路径问题/</div>
+      <div>Bean的生命周期</div>
+      <div>http://example.com/2022/09/12/Bean的生命周期/</div>
     </div>
     <div class="license-meta">
       
@@ -320,7 +345,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年9月5日</div>
+          <div>2022年9月12日</div>
         </div>
       
       
@@ -350,9 +375,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/09/12/Bean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" title="Bean的生命周期">
+                      <a href="/2022/09/12/linux%E4%B8%8Bdocker%E5%90%AF%E5%8A%A8%E5%AE%B9%E5%99%A8%E3%80%81%E6%9F%A5%E7%9C%8B%E5%AE%B9%E5%99%A8%E3%80%81%E6%97%A5%E5%BF%97%E7%AD%89%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" title="linux下docker启动容器、查看容器、日志等常用命令">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Bean的生命周期</span>
+                        <span class="hidden-mobile">linux下docker启动容器、查看容器、日志等常用命令</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -360,8 +385,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/09/05/Redis%E5%9C%A8SpringBoot%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E9%85%8D%E7%BD%AE/" title="Redis在SpringBoot项目中的配置，及Redisson">
-                        <span class="hidden-mobile">Redis在SpringBoot项目中的配置，及Redisson</span>
+                      <a href="/2022/09/05/%E8%9A%82%E8%9A%81%E6%90%AC%E5%AE%B6%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/" title="蚂蚁搬家路径问题">
+                        <span class="hidden-mobile">蚂蚁搬家路径问题</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
